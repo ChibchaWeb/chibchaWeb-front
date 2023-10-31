@@ -1,0 +1,52 @@
+<div class=" h-100 d-flex justify-content-center align-items-center">
+	<div class="container" [ngClass]="{'active': isCreateAccount}" id="container">
+		<div class="form-container sign-up">
+			<form>
+				<h1>Crear Cuenta</h1>
+				<div class="social-icons">
+					<a href="#" class="icons"><i class="fa-brands fa-google-plus-g"></i>
+					</a>
+					<a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a>
+					<a href="#" class="icons"><i class="fa-brands fa-github"></i></a>
+					<a href="#" class="icons"><i class="fa-brands fa-linkedin-in"></i></a>
+				</div>
+				<span>o utilice su correo electrónico/contraseña</span>
+				<input type="text" placeholder="Name">
+				<input type="email" placeholder="Email">
+				<input type="password" placeholder="Password">
+				<button>Sign Up</button>
+			</form>
+		</div>
+		<div class="form-container sign-in">
+			<form>
+				<h1>Iniciar Sesión</h1>
+				<div class="social-icons">
+					<a href="#" class="icons"><i class="fa-brands fa-google-plus-g"></i></a>
+					<a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a>
+					<a href="#" class="icons"><i class="fa-brands fa-github"></i></a>
+					<a href="#" class="icons"><i class="fa-brands fa-linkedin-in"></i></a>
+				</div>
+				<span>o utilice su correo electrónico/contraseña</span>
+				<input type="email" placeholder="Email">
+				<input type="password" placeholder="Password">
+				<a href="#">Olvide mi contraseña</a>
+				<button>Login</button>
+			</form>
+		</div>
+		<div class="toggle-container">
+			<div class="toggle">
+				<div class="toggle-panel toggle-left">
+					<h1>¡Bienvenido de nuevo!</h1>
+					<p>Ingrese sus datos personales para utilizar todas las funciones del sitio</p>
+					<button class="hidden" id="login" (click)="isCreateAccount =false">Iniciar sesión</button>
+				</div>
+				<div class="toggle-panel toggle-right">
+					<h1>Hola amigo</h1>
+					<p>¿Aún no es cliente de Chibcha Web? </p>
+					<button class="hidden" id="register" (click)="isCreateAccount =true">Registrarse</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
