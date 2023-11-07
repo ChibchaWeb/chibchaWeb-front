@@ -1,25 +1,57 @@
-<div class="container mt-5 h-100">
-	<div class="row justify-content-center align-items-center">
-		<h2>Ticket Management</h2>
-  	<!-- Formulario para crear un nuevo ticket -->
-		<form (submit)="createTicket()">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Título del ticket" [(ngModel)]="newTicket.title" name="title" required>
-			</div>
-			<div class="form-group">
-				<textarea class="form-control" rows="4" placeholder="Descripción del ticket" [(ngModel)]="newTicket.description" name="description" required></textarea>
-			</div>
-			<button type="submit" class="btn btn-primary">Crear Ticket</button>
-		</form>
-		
-		<hr>
-		
-		<!-- Lista de tickets -->
-		<ul class="list-group">
-			<li class="list-group-item" *ngFor="let ticket of tickets">
-				<h4>{{ ticket.title }}</h4>
-				<p>{{ ticket.description }}</p>
-			</li>
-		</ul>
-	</div>
+<div class="container">
+  <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre" required>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="E-mail" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="asunto">Asunto</label>
+      <input type="text" class="form-control" id="asunto" formControlName="asunto" placeholder="Asunto" required>
+    </div>
+
+    <div class="form-group">
+      <label for="departamento">Departamento</label>
+      <select class="form-select" id="departamento" formControlName="departamento">
+        <option value="soporte">Soporte</option>
+        <option value="otros">Otros</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="servicios">Servicios relacionados</label>
+      <input type="text" class="form-control" id="servicios" formControlName="servicios" placeholder="Servicios relacionados">
+    </div>
+
+    <div class="form-group">
+      <label for="prioridad">Prioridad</label>
+      <select class="form-select" id="prioridad" formControlName="prioridad">
+        <option value="baja">Baja</option>
+        <option value="media">Media</option>
+        <option value="alta">Alta</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="mensaje">Mensaje</label>
+      <textarea class="form-control" id="mensaje" formControlName="mensaje" rows="4" placeholder="Mensaje"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="adjunto">Adjunto (+añadir más)</label>
+      <input type="file" class="form-control" id="adjunto">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
 </div>

@@ -1,0 +1,11 @@
+<div class="container mt-4">
+  <div class="selected-domains">
+    <div class="selected-info">
+      <span>{{ selectedDomains.length }} artículos seleccionados</span>
+      <span>{{ totalPrice }} pesos</span>
+    </div>
+    <button class="btn btn-success" [routerLink]="['/admin/cart']">
+      <i class="bi bi-cash"></i> Pagar
+    </button>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="domain-item">
+	<div class="domain-info">
+		<span>{{ domain.name }}</span>
+		<div class="domain-price">
+			<span>$ {{ domain.price }}COP</span>
+			<small>{{ domain.subtitle }}</small>
+		</div>
+	</div>
+	<div class="domain-actions">
+		<button class="btn btn-primary" (click)="addToCart(domain)">
+			<i [ngClass]="{ 'bi bi-cart-check': domain.inCart, 'bi bi-cart-plus': !domain.inCart }"></i>
+		</button>
+		<button class="btn btn-danger" (click)="removeFromCart(domain)" *ngIf="domain.inCart">
+			<i class="bi bi-trash"></i>
+		</button>
+	</div>
+</div>

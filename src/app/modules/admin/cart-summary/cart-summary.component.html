@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <!-- Columna de dominios seleccionados -->
+    <div class="col-md-6">
+      <h3>Resumen del carrito</h3>
+      <div formArrayName="items">
+        <div *ngFor="let item of cartForm.get('items').value; let i = index" [formGroupName]="i" class="card d-flex row">
+					<div class="col-3">
+						<img [src]="selectedDomains[i].providerImage" width="auto" alt="Proveedor">
+					</div>
+					<!-- Detalles del dominio -->
+					<div class="col">
+						<div class="domain-details">
+							<p>Nombre: {{ item.name }}</p>
+							<p>Proveedor: {{ item.provider }}</p>
+							<select formControlName="years">
+								<option value="1">1 Año</option>
+								<option value="2">2 Años</option>
+								<option value="5">5 Años</option>
+							</select>
+							<p>Total: <u>{{ item.price | currency:'COP' }}</u></p>
+							<p>Plan: {{ plan }}</p>
+							<p>Descuento: {{ discount }}%</p>
+							<p>Total con descuento: {{ (item.price * (1 - discount / 100)) | currency:'COP' }}</p>
+						</div>
+					</div>
+        </div>
+      </div>
+    </div>
+    <!-- Columna de resumen del pedido -->
+    <div class="col-md-6">
+      <div class="card">
+        <h3>Resumen del Pedido</h3>
+        <p>Cantidad de Artículos Seleccionados: {{ selectedDomains.length }}</p>
+				<p>Dominios Seleccionados: </p>
+				<ul>
+					<li *ngFor="let domain of selectedDomains">{{ domain.name }}</li>
+				</ul>
+        <p>Impuestos: IVA 19%</p>
+        <p>Subtotal (COP): {{ calculateSubtotal() | currency:'COP' }}</p>
+      </div>
+      <button class="btn btn-primary">Comprar</button>
+    </div>
+  </div>
+</div>

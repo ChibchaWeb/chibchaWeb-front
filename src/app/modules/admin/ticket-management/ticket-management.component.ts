@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import tickets from './../../../../assets/js/tickets-list.json'
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-ticket-management',
@@ -7,9 +8,15 @@ import tickets from './../../../../assets/js/tickets-list.json'
   styleUrls: ['./ticket-management.component.scss']
 })
 export class TicketManagementComponent {
-  //tickets: number[] = Array.from({ length: 25 }, (_, i) => i + 1);
-  tickets: any[] = tickets;
+  @Input() tickets: any[] = tickets;
+  dataSource = new MatTableDataSource(this.tickets);
+  displayedColumns: string[] = ['id', 'asunto', 'estado', 'acciones'];
+  pageSizeOptions: number[] = [5, 10, 20];
+  pageSize = 5;
 
-  editTicket(ticket){}
-  deleteTicket(ticket){}
+  verDetalles(ticket: any) {
+  }
+
+  cambiarEstado(ticket: any) {
+  }
 }
