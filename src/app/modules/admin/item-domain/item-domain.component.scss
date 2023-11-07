@@ -38,13 +38,13 @@
   }
   
   /* Estilos para el icono de carrito cuando se agrega */
-  .bi-cart-check {
-    color: green;
+  .bi-cart-check, .btn-primary {
+    color: #fff;
+    background-color: green;
   }
   
   /* Estilos para el icono de basura */
   .btn-danger {
-    background-color: transparent;
     border: none;
     cursor: pointer;
   }

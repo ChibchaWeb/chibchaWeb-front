@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { v4 as uuidv4 } from 'uuid';
+//import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+//import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 
 @Component({
   selector: 'app-tickets',
@@ -10,6 +12,24 @@ import { v4 as uuidv4 } from 'uuid';
 export class TicketsComponent {
   newTicket: any = { title: '', description: '' };
   tickets: any[] = [];
+  message:string='';
+  //Editor = ClassicEditor;
+  predefinedMessage:string=`
+  <p>
+    Bogotá, noviembre 12 de 2023
+    <br/>
+    Sr: Paula Andrea Pérez Gómez
+    <br/>
+    Email: Paula@gmail.com
+  </p>
+  <br/>
+  <p>Asunto:	Respuesta a su radicado SNR2022EE064904.</p>
+  <br/>
+  <p>
+    Respetada Paula Andrea:
+    En atención a su requerimiento de Cambio de propietario del dominio <<dominio>>, me permito informarle que el trámite solicitado no procede por las siguientes razones:
+  </p>
+  `;
 
   createTicket() {
     if (this.newTicket.title && this.newTicket.description) {
@@ -39,4 +59,13 @@ export class TicketsComponent {
       console.log(this.ticketForm.value);
     }
   }
+
+  loadMessage(){
+    this.message = this.predefinedMessage;
+  }
+
+  /* onChange( { editor }: ChangeEvent ) {
+    const data = editor.getData();
+    this.predefinedMessage = data;
+  } */
 }

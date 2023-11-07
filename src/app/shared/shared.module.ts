@@ -6,6 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NavbarAdminComponent } from './components/navbar-admin/navbar-admin.component';
 import { TableComponent } from './components/table/table.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,13 @@ import { TableComponent } from './components/table/table.component';
     CommonModule,
     MaterialModule,
     RouterModule,
+    CKEditorModule,
   ],
   exports:[
     NavbarComponent,
     FooterComponent,
     NavbarAdminComponent,
+    CKEditorModule,
   ]
 })
 export class SharedModule { }
