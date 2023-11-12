@@ -13,6 +13,11 @@ import { ItemDomainComponent } from './item-domain/item-domain.component';
 import { FilterDomainsComponent } from './filter-domains/filter-domains.component';
 import { ShoppingCartBannerComponent } from './shopping-cart-banner/shopping-cart-banner.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { CardsOptionsComponent } from './cards-options/cards-options.component';
+import { NameserversComponent } from './nameservers/nameservers.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { PaypalComponent } from './paypal/paypal.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,11 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
     FilterDomainsComponent,
     ShoppingCartBannerComponent,
     CartSummaryComponent,
+    SidebarComponent,
+    CardsOptionsComponent,
+    NameserversComponent,
+    CheckoutComponent,
+    PaypalComponent,
   ],
   imports: [
     CommonModule,

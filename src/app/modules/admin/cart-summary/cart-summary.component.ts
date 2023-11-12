@@ -9,7 +9,6 @@ import domains from './../../../../assets/js/domains-list.json'
 })
 export class CartSummaryComponent {
   @Input() selectedDomains: any[]=domains;
-
   cartForm: FormGroup;
   discount:number = 18;
   plan:string = 'Premium'

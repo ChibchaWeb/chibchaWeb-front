@@ -1,27 +1,36 @@
 <div class="container">
   <div class="row">
+    <div class="col-12">
+      <h3>Resumen del carrito</h3>
+    </div>
     <!-- Columna de dominios seleccionados -->
     <div class="col-md-6">
-      <h3>Resumen del carrito</h3>
       <div formArrayName="items">
-        <div *ngFor="let item of cartForm.get('items').value; let i = index" [formGroupName]="i" class="card d-flex row">
-					<div class="col-3">
-						<img [src]="selectedDomains[i].providerImage" width="auto" alt="Proveedor">
-					</div>
-					<!-- Detalles del dominio -->
-					<div class="col">
-						<div class="domain-details">
-							<p>Nombre: {{ item.name }}</p>
-							<p>Proveedor: {{ item.provider }}</p>
-							<select formControlName="years">
-								<option value="1">1 Año</option>
-								<option value="2">2 Años</option>
-								<option value="5">5 Años</option>
-							</select>
-							<p>Total: <u>{{ item.price | currency:'COP' }}</u></p>
-							<p>Plan: {{ plan }}</p>
-							<p>Descuento: {{ discount }}%</p>
-							<p>Total con descuento: {{ (item.price * (1 - discount / 100)) | currency:'COP' }}</p>
+        <div *ngFor="let item of cartForm.get('items').value; let i = index" [formGroupName]="i"
+          class="card py-2 px-3 mb-3">
+					<div class="row">
+						<div class="col-3 d-flex align-items-center">
+							<img [src]="selectedDomains[i].providerImage" width="auto" alt="Proveedor" class="img-fluid">
+						</div>
+						<!-- Detalles del dominio -->
+						<div class="col-9">
+							<div class="">
+								<p class="mb-0"><strong>Nombre:</strong> {{ item.name }}</p>
+								<p class="mb-0"><strong>Proveedor:</strong> {{ item.provider }}</p>
+								<p class="mb-0"><strong>Años:</strong> {{ item.years }} {{item.years <= 1?'Año':'Años'}}</p>
+								<!-- <div class="form-group">
+									<label for="years"><strong>Años:</strong></label>
+									<select formControlName="years" id="years" required class="form-control">
+										<option value="1" >1 Año</option>
+										<option value="2" >2 Años</option>
+										<option value="5" selected>5 Años</option>
+									</select>
+								</div> -->
+								<p class="mb-0"><strong>Total:</strong> <u>{{ item.price | currency:'COP' }}</u></p>
+								<p class="mb-0"><strong>Plan:</strong> {{ plan }}</p>
+								<p class="mb-0"><strong>Descuento:</strong> {{ discount }}%</p>
+								<p class="mb-0"><strong>Total con descuento:</strong> {{ (item.price * (1 - discount / 100)) | currency:'COP' }}</p>
+							</div>
 						</div>
 					</div>
         </div>
@@ -30,16 +39,22 @@
     <!-- Columna de resumen del pedido -->
     <div class="col-md-6">
       <div class="card">
-        <h3>Resumen del Pedido</h3>
-        <p>Cantidad de Artículos Seleccionados: {{ selectedDomains.length }}</p>
-				<p>Dominios Seleccionados: </p>
-				<ul>
-					<li *ngFor="let domain of selectedDomains">{{ domain.name }}</li>
-				</ul>
-        <p>Impuestos: IVA 19%</p>
-        <p>Subtotal (COP): {{ calculateSubtotal() | currency:'COP' }}</p>
+        <h3 class="card-header">Resumen del Pedido</h3>
+        <div class="card-body">
+          <p><strong>Cantidad de Artículos Seleccionados:</strong> {{ selectedDomains.length }}</p>
+          <p><strong>Dominios Seleccionados:</strong></p>
+          <ul>
+            <li *ngFor="let domain of selectedDomains">{{ domain.name }}</li>
+          </ul>
+          <p><strong>Impuestos:</strong> IVA 19%</p>
+          <p><strong>Subtotal (COP):</strong> {{ calculateSubtotal() | currency:'COP' }}</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary">Comprar</button>
+          <app-paypal></app-paypal>
+          <!-- <app-checkout></app-checkout> -->
+        </div>
       </div>
-      <button class="btn btn-primary">Comprar</button>
     </div>
   </div>
 </div>

@@ -26,10 +26,10 @@
 	<section id="clients" class="clients clients">
 		<div class="container">
 
-			<div class="row">
+			<div class="row justify-content-center ">
 
 				<div class="col-lg-2 col-md-4 col-6">
-					<img src="assets/img/clients/client-1.png" class="img-fluid" alt="" data-aos="zoom-in">
+					<img height="50%" src="assets/img/clients/client-1.png" class="img-fluid" alt="" data-aos="zoom-in">
 				</div>
 
 				<div class="col-lg-2 col-md-4 col-6">
@@ -52,10 +52,77 @@
 					<img src="assets/img/clients/client-6.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
 				</div>
 
+				<div class="col-lg-2 col-md-4 col-6">
+					<img src="assets/img/clients/client-7.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
+				</div>
+
+				<div class="col-lg-2 col-md-4 col-6">
+					<img src="assets/img/clients/client-8.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
+				</div>
+
+				<div class="col-lg-2 col-md-4 col-6">
+					<img src="assets/img/clients/client-9.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
+				</div>
+
 			</div>
 
 		</div>
 	</section><!-- End Clients Section -->
+	<section>
+		<div class="container">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<h1 class="text-center">Registro de dominios en Colombia</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<h2 class="text-center">¡Compruebe que el dominio deseado esté disponible!</h2>
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-md-8">
+						<form method="post" action="" class="pure-form">
+							<input type="hidden" name="multiple_tld" value="disable">
+							<input type="hidden" name="whoislookuponly" value="no">
+							<input type="hidden" name="integration" value="custom">
+							<input type="hidden" name="available_msg" value="¡Felicidades! {domain} ¡está disponible!">
+							<input type="hidden" name="unavailable_msg" value="{domain} no está disponible">
+							<input type="hidden" name="item_id" value="https://clientes.latinoamericahosting.com.co/">
+							<input type="hidden" name="url" value="">
+							<input type="hidden" name="allowed_tld" value="">
+							<input type="hidden" name="tld" value="">
+							<input type="hidden" name="whois_button" value="custom">
+							<input type="hidden" name="custom_price" value="">
+							<div class="input-group">
+								<input type="text" class="form-control" autocomplete="off" id="Search" name="domain" placeholder="Compruebe la disponibilidad del dominio...">
+								<span class="input-group-btn">
+									<button type="submit" id="Submit" class="btn btn-info">Buscar</button>
+								</span>
+							</div>
+							<div id="loading" class="text-center">
+								<img width="64" height="18" src="https://www.latinoamericahosting.com.co/wp-content/plugins/wp-domain-checker/images/load.gif" alt="loading">
+							</div>
+						</form>
+						<div id="results" class="result large">
+							<pre id="wdc-whois" style="display:none;"></pre>
+							<div class="callout callout-warning alert-warning clearfix req-domain-text">
+								<div class="col-10" style="padding-left:1px;text-align:left;">
+									<i class="fas fa-times" style="margin-right:10px;"></i> Por favor ingrese su dominio.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<p class="text-center"><i class="fas fa-globe-americas"></i> Por favor ingrese el nombre del dominio que desee verificar sin "www." por ejemplo: <a class="c-link" href="http://dominio.com/" target="_blank" rel="noopener noreferrer">dominio.com</a>&nbsp;(dominio.TLD)</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<!-- ======= About Us Section ======= -->
 	<section id="about" class="about">

@@ -5,6 +5,7 @@ import { TicketsComponent } from './tickets/tickets.component';
 import { TicketManagementComponent } from './ticket-management/ticket-management.component';
 import { SearchDomainComponent } from './search-domain/search-domain.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
+import { NameserversComponent } from './nameservers/nameservers.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'search' },
       { path: 'search', component: SearchDomainComponent, },
+      { path: 'nameservers', component: NameserversComponent, },
       { path: 'cart', component: CartSummaryComponent, },
       { path: 'tickets', component: TicketsComponent, },
       { path: 'ticket-management', component: TicketManagementComponent, },

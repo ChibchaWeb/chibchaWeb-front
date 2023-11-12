@@ -17,17 +17,17 @@
       <a class="nav-link" [class.active]="activeTab === 'filtrar'" (click)="activeTab = 'filtrar'">Filtrar</a>
     </li>
   </ul>
-
   <div class="tab-content">
     <div class="tab-pane" [class.active]="activeTab === 'resultados'">
 			<div class="container" *ngIf="domains">
+        <app-cards-options></app-cards-options>
 				<app-item-domain *ngFor="let item of domains" [domain]="item"></app-item-domain>
 			</div>
     </div>
     <div class="tab-pane" [class.active]="activeTab === 'filtrar'">
 			<app-filter-domains [domains]="domains" (domainsFiltered)="newDomainList = $event"></app-filter-domains>
-			{{newDomainList |json}}
 			<div class="container" *ngIf="newDomainList">
+        <app-cards-options></app-cards-options>
 				<app-item-domain *ngFor="let item of newDomainList" [domain]="item"></app-item-domain>
 			</div>
 			<div class="container" *ngIf="newDomainList.length<=0">

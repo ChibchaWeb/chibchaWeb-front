@@ -1,4 +1,4 @@
-card {
+.card {
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px 0;
@@ -7,10 +7,6 @@ card {
   img {
     max-width: 100px;
     height: auto;
-  }
-  
-  .domain-details {
-    margin-left: 120px;
   }
   
   /* Estilos para la columna de resumen del pedido */

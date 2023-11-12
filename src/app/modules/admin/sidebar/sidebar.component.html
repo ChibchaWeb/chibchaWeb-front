@@ -1,0 +1,14 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>support</mat-icon>
+        Ticket de Soporte
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="ticket-content">
+      <p>Nombre del ticket: {{codeTicket()}}</p>
+      <button mat-raised-button color="primary" (click)="aceptarTicket()">Aceptar</button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
