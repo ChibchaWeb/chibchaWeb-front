@@ -8,6 +8,7 @@
       </button>
     </div>
   </form>
+
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link" [class.active]="activeTab === 'resultados'" (click)="activeTab = 'resultados'">Resultados</a>
@@ -18,18 +19,18 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane" [class.active]="activeTab === 'resultados'">
-			<div class="container" *ngIf="domains">
+			<div class="container" *ngIf="domains.length>0">
         <app-cards-options (addProduct)="addToCart($event)" (removeProduct)="removeToCart($event)" ></app-cards-options>
 				<app-item-domain (addProduct)="addToCart($event)" (removeProduct)="removeToCart($event)" *ngFor="let item of domains" [domain]="item"></app-item-domain>
 			</div>
     </div>
     <div class="tab-pane" [class.active]="activeTab === 'filtrar'">
 			<app-filter-domains [domains]="domains" (domainsFiltered)="newDomainList = $event"></app-filter-domains>
-			<div class="container" *ngIf="newDomainList">
+			<div class="container" *ngIf="newDomainList && newDomainList.length>0">
         <app-cards-options (addProduct)="addToCart($event)" (removeProduct)="removeToCart($event)" ></app-cards-options>
 				<app-item-domain (addProduct)="addToCart($event)" (removeProduct)="removeToCart($event)" *ngFor="let item of newDomainList" [domain]="item"></app-item-domain>
 			</div>
-			<div class="container" *ngIf="newDomainList.length<=0">
+			<div class="container" *ngIf="!newDomainList || newDomainList.length<=0">
 				<div class="text-center">
 					<h2>No se encontraron resultados</h2>
 				</div>

@@ -83,34 +83,29 @@
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-md-8">
-						<form method="post" action="" class="pure-form">
-							<input type="hidden" name="multiple_tld" value="disable">
-							<input type="hidden" name="whoislookuponly" value="no">
-							<input type="hidden" name="integration" value="custom">
-							<input type="hidden" name="available_msg" value="¡Felicidades! {domain} ¡está disponible!">
-							<input type="hidden" name="unavailable_msg" value="{domain} no está disponible">
-							<input type="hidden" name="item_id" value="https://clientes.latinoamericahosting.com.co/">
-							<input type="hidden" name="url" value="">
-							<input type="hidden" name="allowed_tld" value="">
-							<input type="hidden" name="tld" value="">
-							<input type="hidden" name="whois_button" value="custom">
-							<input type="hidden" name="custom_price" value="">
-							<div class="input-group">
-								<input type="text" class="form-control" autocomplete="off" id="Search" name="domain" placeholder="Compruebe la disponibilidad del dominio...">
-								<span class="input-group-btn">
-									<button type="submit" id="Submit" class="btn btn-info">Buscar</button>
-								</span>
+					<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+						<input type="hidden" name="multiple_tld" value="disable">
+						<input type="hidden" name="whoislookuponly" value="no">
+						<input type="hidden" name="integration" value="custom">
+						<!-- Agrega los otros campos ocultos si son necesarios -->
+
+						<div class="input-group">
+							<input type="text" class="form-control" autocomplete="off" id="Search" formControlName="domain" placeholder="Compruebe la disponibilidad del dominio...">
+							<span class="input-group-btn">
+								<button type="submit" id="Submit" class="btn btn-info">Buscar</button>
+							</span>
+						</div>
+
+						<div id="loading" class="text-center">
+							<img width="64" height="18" src="https://www.latinoamericahosting.com.co/wp-content/plugins/wp-domain-checker/images/load.gif" alt="loading">
+						</div>
+					</form>
+						<div *ngIf="isResult" class="result large">
+							<div class="alert alert-success" role="alert" *ngIf="!isExist">
+								<span>¡Felicidades! <strong>{{searchForm.get('domain').value}}</strong> ¡está disponible!</span>
 							</div>
-							<div id="loading" class="text-center">
-								<img width="64" height="18" src="https://www.latinoamericahosting.com.co/wp-content/plugins/wp-domain-checker/images/load.gif" alt="loading">
-							</div>
-						</form>
-						<div id="results" class="result large">
-							<pre id="wdc-whois" style="display:none;"></pre>
-							<div class="callout callout-warning alert-warning clearfix req-domain-text">
-								<div class="col-10" style="padding-left:1px;text-align:left;">
-									<i class="fas fa-times" style="margin-right:10px;"></i> Por favor ingrese su dominio.
-								</div>
+							<div class="alert alert-danger" role="alert" *ngIf="isExist">
+								<span><strong>{{searchForm.get('domain').value}}</strong> no está disponible</span>
 							</div>
 						</div>
 					</div>

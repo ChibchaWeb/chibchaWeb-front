@@ -6,9 +6,14 @@
 		<h2>{{ domain.name }}</h2>
 		<span>Proveedor: {{domain['provider']}}</span>
 	</div>
-	<div>
+	<div class="text-end">
+		<span *ngIf="domain['discount']">
+			<del>$ {{domain.price.toLocaleString('es-CO')}} COP</del>
+		</span>
 		<div class="domain-price">
-			<span>$ {{ domain.price.toLocaleString('es-CO') }} COP</span>
+			<span>$ {{ !domain['discount']? 
+			domain.price.toLocaleString('es-CO') : 
+			(domain.price-(domain['discount']*domain.price)/100).toLocaleString('es-CO') }} COP</span>
 			<small>{{ domain.subtitle }}</small>
 		</div>
 	</div>

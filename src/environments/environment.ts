@@ -14,7 +14,10 @@ export const environment = {
   accountPayPal:{
     user:'sb-vvva125268095@personal.example.com',
     pass:'M-9_&a)W'
-  }
+  },
+  //https://api-ninjas.com/api/whois
+  whois:'https://api.api-ninjas.com/v1/whois',
+  tokenNinjaAPI:'s/25Z8wR5Z/BfA5xeONxpA==gVWQgDlii1llvVli'
 };
 /*
 

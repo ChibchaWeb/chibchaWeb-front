@@ -26,4 +26,12 @@ export class DomainsService {
 		const params = {page: '1',};
 		return this.http.get(`https://api.dev.name.com/v4/domains/${domain}`,{ headers })
 	}
+
+	getWhoisInfo(domain: string) {
+		const headers = new HttpHeaders({
+			'X-Api-Key': env.tokenNinjaAPI
+		});
+		const apiUrl = env.whois;
+		return this.http.get(`${apiUrl}?domain=${domain}`,{ headers });
+	}
 }
