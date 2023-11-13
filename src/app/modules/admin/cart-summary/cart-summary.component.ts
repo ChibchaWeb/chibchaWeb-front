@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import domains from './../../../../assets/js/domains-list.json'
+import { ShoppingService } from '@service/shopping.service';
 
 @Component({
   selector: 'app-cart-summary',
@@ -12,19 +13,26 @@ export class CartSummaryComponent {
   cartForm: FormGroup;
   discount:number = 18;
   plan:string = 'Premium'
+  productSelected:any = [];
+  iva:number=0;
+  subtotal:number=0;
 
-  constructor(private fb: FormBuilder) {
-    this.cartForm = this.fb.group({
-      items: this.fb.array([]),
-    });
+  constructor(private fb: FormBuilder,private shoppingService:ShoppingService) {
+    this.shoppingService.cartShopping.subscribe({
+      next:(response)=>{
+        this.productSelected = response
+        if (this.productSelected) this.calcImpuestos()
+      },
+      complete:()=>{},
+      error:(err)=>{}
+    })
   }
 
   ngOnInit() {
-    this.initItems();
   }
 
   initItems() {
-    const itemsArray = this.cartForm.get('items') as FormArray;
+    /* const itemsArray = this.cartForm.get('items') as FormArray;
     this.selectedDomains.forEach(domain => {
       itemsArray.push(this.fb.group({
         name: [domain.name],
@@ -35,9 +43,18 @@ export class CartSummaryComponent {
         discount: [0],
         total: [domain.price],
       }));
-    });
+    }); */
   }
-  calculateSubtotal(){
-    return 34590
+
+  calcImpuestos(){
+    this.iva = 0
+    let subtotal = 0
+    this.subtotal = 0
+    this.productSelected.map(el =>{
+      this.iva += (el.price*0.19)
+      subtotal += el.price
+    })
+    this.subtotal = subtotal - this.iva
   }
+
 }

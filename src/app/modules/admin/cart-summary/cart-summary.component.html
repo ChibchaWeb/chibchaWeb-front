@@ -4,20 +4,20 @@
       <h3>Resumen del carrito</h3>
     </div>
     <!-- Columna de dominios seleccionados -->
-    <div class="col-md-6">
-      <div formArrayName="items">
-        <div *ngFor="let item of cartForm.get('items').value; let i = index" [formGroupName]="i"
+    <div class="col-md-6" *ngIf="productSelected">
+      <div >
+        <div *ngFor="let item of productSelected; let i = index"
           class="card py-2 px-3 mb-3">
 					<div class="row">
 						<div class="col-3 d-flex align-items-center">
-							<img [src]="selectedDomains[i].providerImage" width="auto" alt="Proveedor" class="img-fluid">
+							<img [src]="item.providerImage" width="auto" alt="Proveedor" class="img-fluid">
 						</div>
 						<!-- Detalles del dominio -->
 						<div class="col-9">
 							<div class="">
 								<p class="mb-0"><strong>Nombre:</strong> {{ item.name }}</p>
 								<p class="mb-0"><strong>Proveedor:</strong> {{ item.provider }}</p>
-								<p class="mb-0"><strong>Años:</strong> {{ item.years }} {{item.years <= 1?'Año':'Años'}}</p>
+								<!-- <p class="mb-0"><strong>Años:</strong> {{ item.years }} {{item.years <= 1?'Año':'Años'}}</p> -->
 								<!-- <div class="form-group">
 									<label for="years"><strong>Años:</strong></label>
 									<select formControlName="years" id="years" required class="form-control">
@@ -40,18 +40,24 @@
     <div class="col-md-6">
       <div class="card">
         <h3 class="card-header">Resumen del Pedido</h3>
-        <div class="card-body">
-          <p><strong>Cantidad de Artículos Seleccionados:</strong> {{ selectedDomains.length }}</p>
+        <div class="card-body" *ngIf="productSelected">
+          <p><strong>Cantidad de Artículos Seleccionados:</strong> {{ productSelected.length }}</p>
           <p><strong>Dominios Seleccionados:</strong></p>
           <ul>
-            <li *ngFor="let domain of selectedDomains">{{ domain.name }}</li>
+            <li *ngFor="let domain of productSelected">{{ domain.name }}</li>
           </ul>
-          <p><strong>Impuestos:</strong> IVA 19%</p>
-          <p><strong>Subtotal (COP):</strong> {{ calculateSubtotal() | currency:'COP' }}</p>
+          <p><strong>Impuestos:</strong> </p>
+          <ul>
+            <li>IVA 19%: ${{iva.toLocaleString('es-CO')}} COP</li>
+          </ul>
+          <p><strong>Subtotal (COP):</strong> ${{ subtotal.toLocaleString('es-CO')}} COP</p>
         </div>
         <div class="card-footer">
-          <button class="btn btn-primary">Comprar</button>
-          <app-paypal></app-paypal>
+          <div class="row">
+            <div class="col-6">
+              <app-paypal></app-paypal>
+            </div>
+          </div>
           <!-- <app-checkout></app-checkout> -->
         </div>
       </div>

@@ -4,20 +4,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeAdminComponent } from './home/home.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { TicketsComponent } from './tickets/tickets.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { TicketManagementComponent } from './ticket-management/ticket-management.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { SearchDomainComponent } from './search-domain/search-domain.component';
-import { ItemDomainComponent } from './item-domain/item-domain.component';
-import { FilterDomainsComponent } from './filter-domains/filter-domains.component';
-import { ShoppingCartBannerComponent } from './shopping-cart-banner/shopping-cart-banner.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { CardsOptionsComponent } from './cards-options/cards-options.component';
+import { CardsOptionsComponent } from '../../helpers/shared/components/cards-options/cards-options.component';
 import { NameserversComponent } from './nameservers/nameservers.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { PaypalComponent } from './paypal/paypal.component';
+import { DashboardRoutingModule } from '@modules/dashboard/dashboard-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,15 +21,9 @@ import { PaypalComponent } from './paypal/paypal.component';
     TicketsComponent,
     TicketManagementComponent,
     SearchDomainComponent,
-    ItemDomainComponent,
-    FilterDomainsComponent,
-    ShoppingCartBannerComponent,
     CartSummaryComponent,
-    SidebarComponent,
     CardsOptionsComponent,
     NameserversComponent,
-    CheckoutComponent,
-    PaypalComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +32,8 @@ import { PaypalComponent } from './paypal/paypal.component';
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    DashboardRoutingModule,
   ]
 })
 export class AdminModule { }

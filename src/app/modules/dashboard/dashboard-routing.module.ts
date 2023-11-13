@@ -5,11 +5,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: '', component: HomeAdminComponent,
-    children: [
-      { path: '', pathMatch: 'full', redirectTo: '' },
-      { path: '', component: HomeComponent},
-    ]
+    path: '', component: HomeComponent,
   },
 
 ];
@@ -17,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class DashboardRoutingModule { }
