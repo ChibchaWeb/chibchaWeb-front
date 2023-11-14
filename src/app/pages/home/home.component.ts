@@ -9,35 +9,4 @@ import { ShoppingService } from '@service/shopping.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  searchForm: FormGroup;
-  isExist:any=null;
-  isResult:boolean = false;
-
-  constructor(private fb: FormBuilder,
-    private domainsService:DomainsService,
-    private shoppingService:ShoppingService) {
-    this.searchForm = this.fb.group({
-      domain: [''],
-    });
-  }
-
-  onSubmit() {
-    this.isExist = null
-    const domain = this.searchForm.get('domain').value;
-    this.domainsService.getWhoisInfo(domain).subscribe({
-      next:(response)=>{
-        if (response && response['domain_name']) this.isExist = true
-        else this.isExist = false
-      },
-      complete:()=>{
-        this.isResult = true
-      },
-      error:(err)=>{
-      },
-    })
-
-  }
-
-  search(){
-  }
 }
