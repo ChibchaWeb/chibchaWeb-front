@@ -55,7 +55,7 @@ export class SearchDomainComponent {
             inCart: false,
             provider: ".CO",
             discount: subtitle[randomSubtitleIndex] === "Descuento del 10%" ? 10 : 0,
-            providerImage:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/DotCO_logo.svg/1200px-DotCO_logo.svg.png"
+            providerImage:`/assets/img/clients/client-${Math.floor(Math.random() * 9)+1}.png`
         });
         });
         if (this.domainExistsInWhois) {

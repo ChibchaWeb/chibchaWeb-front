@@ -6,12 +6,14 @@ import { TicketManagementComponent } from './ticket-management/ticket-management
 import { SearchDomainComponent } from './search-domain/search-domain.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { NameserversComponent } from './nameservers/nameservers.component';
+import { PanelComponent } from './panel/panel.component';
 
 const routes: Routes = [
   {
     path: '', component: HomeAdminComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'search' },
+      { path: '', pathMatch: 'full', redirectTo: 'panel' },
+      { path: 'panel', component: PanelComponent, },
       { path: 'search', component: SearchDomainComponent, },
       { path: 'nameservers', component: NameserversComponent, },
       { path: 'cart', component: CartSummaryComponent, },

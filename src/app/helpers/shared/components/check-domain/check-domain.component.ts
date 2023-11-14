@@ -4,11 +4,11 @@ import { DomainsService } from '@service/domains.service';
 import { ShoppingService } from '@service/shopping.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-check-domain',
+  templateUrl: './check-domain.component.html',
+  styleUrls: ['./check-domain.component.scss']
 })
-export class HomeComponent {
+export class CheckDomainComponent {
   searchForm: FormGroup;
   isExist:any=null;
   isResult:boolean = false;
@@ -36,8 +36,5 @@ export class HomeComponent {
       },
     })
 
-  }
-
-  search(){
   }
 }

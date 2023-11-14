@@ -14,6 +14,12 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PanelComponent } from '@modules/admin/panel/panel.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { RecuadroComponent } from './components/recuadro/recuadro.component';
+import { CuadrosComponent } from './components/cuadros/cuadros.component';
+import { ChartComponent } from './components/chart/chart.component';
+import { CheckDomainComponent } from './components/check-domain/check-domain.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     CheckoutComponent,
     PaypalComponent,
+    PanelComponent,
+    MenuComponent,
+    RecuadroComponent,
+    CuadrosComponent,
+    ChartComponent,
+    CheckDomainComponent,
   ],
   imports: [
     CommonModule,
@@ -47,6 +59,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     CheckoutComponent,
     PaypalComponent,
+    PanelComponent,
+    MenuComponent,
+    RecuadroComponent,
+    CuadrosComponent,
+    ChartComponent,
+    CheckDomainComponent,
   ]
 })
 export class SharedModule { }
