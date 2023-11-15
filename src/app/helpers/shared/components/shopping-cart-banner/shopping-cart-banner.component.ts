@@ -14,6 +14,7 @@ export class ShoppingCartBannerComponent {
   constructor(private shoppingService:ShoppingService){
     this.shoppingService.cartShopping.subscribe({
       next:(response)=>{
+        console.log(response)
         if (response) {
           this.totalPrice = 0
           this.selectedDomains = response

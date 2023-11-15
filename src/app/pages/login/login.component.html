@@ -1,36 +1,35 @@
 <div class=" h-100 d-flex justify-content-center align-items-center">
 	<div class="container" [ngClass]="{'active': isCreateAccount}" id="container">
 		<div class="form-container sign-up">
-			<form>
+			<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 				<h1>Crear Cuenta</h1>
 				<div class="social-icons">
-					<a href="#" class="icons"><i class="fa-brands fa-google-plus-g"></i>
-					</a>
-					<a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a>
-					<a href="#" class="icons"><i class="fa-brands fa-github"></i></a>
-					<a href="#" class="icons"><i class="fa-brands fa-linkedin-in"></i></a>
+				  <a href="#" class="icons"><i class="fa-brands fa-google-plus-g"></i></a>
+				  <a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a>
+				  <a href="#" class="icons"><i class="fa-brands fa-github"></i></a>
+				  <a href="#" class="icons"><i class="fa-brands fa-linkedin-in"></i></a>
 				</div>
 				<span>o utilice su correo electrónico/contraseña</span>
-				<input type="text" placeholder="Name">
-				<input type="email" placeholder="Email">
-				<input type="password" placeholder="Password">
-				<button>Sign Up</button>
+				<input type="text" placeholder="Name" formControlName="name">
+				<input type="email" placeholder="Email" formControlName="email">
+				<input type="password" placeholder="Password" formControlName="password">
+				<button type="submit" *ngIf="signupForm.valid">Sign Up</button>
 			</form>
 		</div>
 		<div class="form-container sign-in">
-			<form>
+			<form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
 				<h1>Iniciar Sesión</h1>
 				<div class="social-icons">
-					<a href="#" class="icons"><i class="fa-brands fa-google-plus-g"></i></a>
-					<a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a>
-					<a href="#" class="icons"><i class="fa-brands fa-github"></i></a>
-					<a href="#" class="icons"><i class="fa-brands fa-linkedin-in"></i></a>
+				  <a href="#" class="icons"><i class="fa-brands fa-google-plus-g"></i></a>
+				  <a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a>
+				  <a href="#" class="icons"><i class="fa-brands fa-github"></i></a>
+				  <a href="#" class="icons"><i class="fa-brands fa-linkedin-in"></i></a>
 				</div>
 				<span>o utilice su correo electrónico/contraseña</span>
-				<input type="email" placeholder="Email">
-				<input type="password" placeholder="Password">
+				<input type="email" placeholder="Email" formControlName="email">
+				<input type="password" placeholder="Password" formControlName="password">
 				<a href="#">Olvide mi contraseña</a>
-				<button>Login</button>
+				<button type="submit">Login</button>
 			</form>
 		</div>
 		<div class="toggle-container">
