@@ -7,6 +7,8 @@ import { SearchDomainComponent } from './search-domain/search-domain.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { NameserversComponent } from './nameservers/nameservers.component';
 import { PanelComponent } from './panel/panel.component';
+import { HostingComponent } from './hosting/hosting.component';
+import { CreditCardsComponent } from './credit-cards/credit-cards.component';
 
 const routes: Routes = [
   {
@@ -15,6 +17,8 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'panel' },
       { path: 'panel', component: PanelComponent, },
       { path: 'search', component: SearchDomainComponent, },
+      { path: 'hosting', component: HostingComponent, },
+      { path: 'credit', component: CreditCardsComponent, },
       { path: 'nameservers', component: NameserversComponent, },
       { path: 'cart', component: CartSummaryComponent, },
       { path: 'tickets', component: TicketsComponent, },
