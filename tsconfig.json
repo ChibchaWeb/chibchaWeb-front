@@ -17,6 +17,7 @@
       "@service/*": ["src/app/helpers/services/*"],
       "@shared/*": ["src/app/helpers/shared/*"],
       "@types/*": ["src/app/helpers/types/*"],
+      "@utils/*": ["src/app/helpers/utils/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": false,

@@ -15,6 +15,7 @@ export class ItemDomainComponent {
   @Output() addProduct = new EventEmitter();
   @Output() removeProduct = new EventEmitter();
   @Input('domain') domain:Domain;
+  @Input('isExist') isDomainExist:any;
   selectedDomains: Domain[] = [];
   totalPrice: number = 0;
 

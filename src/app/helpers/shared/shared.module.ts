@@ -20,6 +20,8 @@ import { RecuadroComponent } from './components/recuadro/recuadro.component';
 import { CuadrosComponent } from './components/cuadros/cuadros.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { CheckDomainComponent } from './components/check-domain/check-domain.component';
+import { ButtonComponent } from './components/button/button.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { CheckDomainComponent } from './components/check-domain/check-domain.com
     CuadrosComponent,
     ChartComponent,
     CheckDomainComponent,
+    ButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -47,6 +50,7 @@ import { CheckDomainComponent } from './components/check-domain/check-domain.com
     CKEditorModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   exports:[
     NavbarComponent,
@@ -65,6 +69,7 @@ import { CheckDomainComponent } from './components/check-domain/check-domain.com
     CuadrosComponent,
     ChartComponent,
     CheckDomainComponent,
+    ButtonComponent,
   ]
 })
 export class SharedModule { }

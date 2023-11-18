@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '@service/auth.service';
 import { ConnectionService } from '@service/connection.service';
+import { RequestStatus } from 'src/app/helpers/models/request-status';
 
-const container = document.getElementById('container');
-const registerBtn = document.getElementById('register');
-const loginBtn = document.getElementById('login')
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,8 +14,13 @@ export class LoginComponent {
   signupForm: FormGroup;
   loginForm: FormGroup;
   isCreateAccount:boolean = false
+  status:RequestStatus='init'
 
-  constructor(private connectionService:ConnectionService,private fb: FormBuilder){}
+  constructor(private connectionService:ConnectionService,
+    private fb: FormBuilder,
+    private router: Router,
+    private authService:AuthService,
+    ){}
 
   ngOnInit() {
     this.signupForm = this.fb.group({
@@ -38,6 +43,7 @@ export class LoginComponent {
       .subscribe({
         next:(response)=>{
           console.log(response)
+          this.router.navigate(['/admin/panel'])
         },
         error:(err)=>{console.log(err)}
       })
@@ -45,15 +51,25 @@ export class LoginComponent {
   }
 
   onSubmitLogin() {
+    this.status = 'loading'
     if (this.loginForm.valid) {
       console.log(this.loginForm.value)
-      this.connectionService.loginUser(this.loginForm.value)
+      this.authService.login(this.loginForm.value)
       .subscribe({
         next:(response)=>{
+          this.status = 'success'
           console.log(response)
         },
-        error:(err)=>{console.log(err)}
+        complete:()=>{
+          this.router.navigate(['/admin/panel']);
+        },
+        error:(err)=>{
+          this.status = 'failed'
+          console.log(err)
+        }
       })
+    }else{
+      this.loginForm.markAllAsTouched();
     }
   }
 }
