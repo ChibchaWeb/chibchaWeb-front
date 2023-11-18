@@ -8,7 +8,7 @@
       "@assets/*": ["src/assets/*"],
       "@data/*": ["src/app/helpers/data/*"],
       "@directives/*": ["src/app/helpers/directives/*"],
-      "@guard/*": ["src/app/helpers/guard/*"],
+      "@guards/*": ["src/app/helpers/guards/*"],
       "@interceptors/*": ["src/app/helpers/interceptors/*"],
       "@interfaces/*": ["src/app/helpers/interfaces/*"],
       "@modules/*": ["src/app/modules/*"],

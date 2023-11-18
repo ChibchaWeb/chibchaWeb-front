@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from '@guards/auth.guard'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -14,8 +15,7 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent},
     ]
   },
-  { path: 'user',loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule)},
-  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)},
+  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule), canActivate:[AuthGuard]},
   { path: '**', redirectTo: '/'},
 
 ];

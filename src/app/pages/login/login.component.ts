@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@service/auth.service';
 import { ConnectionService } from '@service/connection.service';
+import { CustomValidators } from '@utils/validators';
 import { RequestStatus } from 'src/app/helpers/models/request-status';
 
 @Component({
@@ -23,12 +24,16 @@ export class LoginComponent {
     ){}
 
   ngOnInit() {
-    this.signupForm = this.fb.group({
+    this.signupForm = this.fb.nonNullable.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
       idDocument:['1024356987', ],
-      documentType:['CC',]
+      documentType:['CC',],
+      confirPassword: ['', [Validators.required, Validators.minLength(5)]],
+    },
+    {
+      validators:[CustomValidators.MatchValidator('password','confirPassword')]
     });
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -39,11 +44,11 @@ export class LoginComponent {
   onSubmit() {
     if (this.signupForm.valid) {
       console.log(this.signupForm.value)
-      this.connectionService.registerUser(this.signupForm.value)
+      this.authService.registerAndLogin(this.signupForm.value)
       .subscribe({
         next:(response)=>{
           console.log(response)
-          this.router.navigate(['/admin/panel'])
+          this.router.navigate(['/admin/panel']);
         },
         error:(err)=>{console.log(err)}
       })
