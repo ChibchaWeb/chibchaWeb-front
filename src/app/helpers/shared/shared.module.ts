@@ -22,6 +22,7 @@ import { ChartComponent } from './components/chart/chart.component';
 import { CheckDomainComponent } from './components/check-domain/check-domain.component';
 import { ButtonComponent } from './components/button/button.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CardHostingComponent } from './components/card-hosting/card-hosting.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ChartComponent,
     CheckDomainComponent,
     ButtonComponent,
+    CardHostingComponent,
   ],
   imports: [
     CommonModule,
@@ -70,6 +72,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ChartComponent,
     CheckDomainComponent,
     ButtonComponent,
+    CardHostingComponent,
   ]
 })
 export class SharedModule { }
