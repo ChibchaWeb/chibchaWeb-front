@@ -13,6 +13,7 @@
 				<input type="text" placeholder="Name" formControlName="name">
 				<input type="email" placeholder="Email" formControlName="email">
 				<input type="password" placeholder="Password" formControlName="password">
+				<input type="password" placeholder="Confir Password" formControlName="confirPassword">
 				<button type="submit" *ngIf="signupForm.valid">Sign Up</button>
 			</form>
 		</div>
@@ -27,6 +28,14 @@
 				</div>
 				<span>o utilice su correo electrónico/contraseña</span>
 				<input type="email" placeholder="Email" formControlName="email">
+				<div class="text-red" *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">
+					<span *ngIf="loginForm.controls['email'].hasError('required')" >
+						Tienes que ingresar un correo
+					</span>
+					<span *ngIf="loginForm.controls['email'].hasError('email')">
+						Correo inválido
+					</span>
+				</div>
 				<input type="password" placeholder="Password" formControlName="password">
 				<a href="#">Olvide mi contraseña</a>
 				<button type="submit">Login</button>
