@@ -3,9 +3,10 @@
     <div class="col-12">
       <h3>Resumen del carrito</h3>
     </div>
-    <!-- Columna de dominios seleccionados -->
-    <div class="col-md-6" *ngIf="productSelected">
-      <div >
+    <!-- Columna de productos seleccionados -->
+    <div class="col-md-6">
+      <!-- dominios seleccionados -->
+      <div  *ngIf="productSelected">
         <div *ngFor="let item of productSelected; let i = index"
           class="card py-2 px-3 mb-3">
 					<div class="row">
@@ -35,6 +36,26 @@
 					</div>
         </div>
       </div>
+      <!-- hosting seleccionados -->
+      <div  *ngIf="hostingSelected">
+        <div *ngFor="let item of hostingSelected; let i = index"
+          class="card py-2 px-3 mb-3">
+					<div class="row">
+						<div class="col-3 d-flex align-items-center plan">
+							<img [src]="'/assets/img/clients/'+item.title+'.png'" alt="Proveedor" class="img-fluid">
+						</div>
+						<!-- Detalles del dominio -->
+						<div class="col-9">
+							<div class="">
+								<p class="mb-0"><strong>Plataformas:</strong> {{ item.platform ? item.platform: 'Linux'}}</p>
+								<p class="mb-0"><strong>Proveedor:</strong> Chibchaweb</p>
+								<p class="mb-0"><strong>Años:</strong> 1 año</p>
+								<p class="mb-0"><strong>Total:</strong> <u> {{ item.currency | currency:'COP' }}</u></p>
+							</div>
+						</div>
+					</div>
+        </div>
+      </div>
     </div>
     <!-- Columna de resumen del pedido -->
     <div class="col-md-6">
@@ -42,9 +63,13 @@
         <h3 class="card-header">Resumen del Pedido</h3>
         <div class="card-body" *ngIf="productSelected">
           <p><strong>Cantidad de Artículos Seleccionados:</strong> {{ productSelected.length }}</p>
-          <p><strong>Dominios Seleccionados:</strong></p>
-          <ul>
+          <p *ngIf="productSelected.length >0"><strong>Dominios Seleccionados:</strong></p>
+          <ul *ngIf="productSelected.length >0">
             <li *ngFor="let domain of productSelected">{{ domain.name }}</li>
+          </ul>
+          <p *ngIf="hostingSelected.length >0"><strong>Hostings Seleccionados:</strong></p>
+          <ul *ngIf="hostingSelected.length >0">
+            <li *ngFor="let hosting of hostingSelected">{{ hosting.title }}</li>
           </ul>
           <p><strong>Impuestos:</strong> </p>
           <ul>
@@ -62,5 +87,6 @@
         </div>
       </div>
     </div>
+    <app-json-to-xml *ngIf="jsonXML" [jsonData]="jsonXML"></app-json-to-xml>
   </div>
 </div>

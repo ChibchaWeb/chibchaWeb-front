@@ -14,13 +14,17 @@ export class CartSummaryComponent {
   discount:number = 18;
   plan:string = 'Premium'
   productSelected:any = [];
+  hostingSelected:any = [];
   iva:number=0;
   subtotal:number=0;
+  jsonXML:any;
 
   constructor(private fb: FormBuilder,private shoppingService:ShoppingService) {
     this.shoppingService.cartShopping.subscribe({
       next:(response)=>{
-        this.productSelected = response
+        this.jsonXML = Object.assign({domainList:response.domainList,hosting:response.hosting})
+        this.productSelected = response.domainList
+        this.hostingSelected = response.hosting
         if (this.productSelected) this.calcImpuestos()
       },
       complete:()=>{},
@@ -50,10 +54,18 @@ export class CartSummaryComponent {
     this.iva = 0
     let subtotal = 0
     this.subtotal = 0
-    this.productSelected.map(el =>{
-      this.iva += (el.price*0.19)
-      subtotal += el.price
-    })
+    if (this.productSelected && this.productSelected.domainList) {
+      this.productSelected.domainList.map(el =>{
+        this.iva += (el.price*0.19)
+        subtotal += el.price
+      })
+    }
+    if (this.productSelected && this.productSelected.hosting) {
+      this.productSelected.hosting.map(el =>{
+        this.iva += (el.price*0.19)
+        subtotal += el.currency
+      })
+    }
     this.subtotal = subtotal - this.iva
   }
 

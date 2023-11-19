@@ -1,40 +1,32 @@
-<div class="pt-col">
-    <div class="pt-block">
-    <div class="pt-back">
-    </div>
-    <div class="pt-head">
-    <div class="pt-title">H4</div>
-    <div class="pt-sub-title">Panel de control cPanel</div>
-    </div>
-    <div class="pt-price-block">
-    <span class="pt-currency"></span><span class="pt-price-main"><span class="pt-subprice">$</span>300.</span><span class="pt-price-rest">000<span class="pt-sub">/año</span></span> </div>
-    <div></div>
-    <ul class="pt-list">
-    <li>
-    <i class="far fa-hdd"></i> 70 GB Espacio <span class="ssd">SSD NVMe</span> </li>
-    <li>
-    <i class="fas fa-chart-area"></i> 800 GB de Tráfico / mes </li>
-    <li>
-    <i class="far fa-envelope"></i> 150 Cuentas E-mail </li>
-    <li>
-    <i class="fas fa-database"></i> 25 Bases de datos </li>
-    <li>
-    <i class="fas fa-globe-americas"></i> 5 Dominios permitidos </li>
-    <li>
-    <i class="fab fa-wordpress"></i> WordPress / Joomla / Otros </li>
-    <li>
-    <i class="fas fa-rocket"></i> LiteSpeed + LSCache </li>
-    <li>
-    <i class="fas fa-shield-alt"></i> Seguridad Imunify360 </li>
-    <li>
-    <i class="fas fa-palette"></i> Constructor de sitios Pro </li>
-    <li>
-    <i class="fas fa-upload"></i> Copias de seguridad </li>
-    <li>
-    <i class="fab fa-expeditedssl"></i> SSL gratis (https://) </li>
-    </ul>
-    <div class="pt-footer">
-    <a href="https://clientes.latinoamericahosting.com.co/cart.php" class="pt-btn">Comprar</a>
-    </div>
-    </div>
+<div class="container">
+	<div class="row">
+			<div class="card">
+				<div class="card-header text-primary text-center">
+					<h1 class="card-title"><strong>{{data.title}}</strong></h1>
+				</div>
+				<div class="bg-primary text-white text-center card-subtitle">
+					<h3 class=" my-2 text-muted dark">{{data.subTitle}}</h3>
+				</div>
+				<div class="card-body">
+					<div class="pt-price-block">
+						<span class="pt-currency"></span>
+						<span class="pt-price-main" *ngIf="data.currency">
+							<span class="pt-subprice">$</span>{{data.currency.toLocaleString('es-CO')}} COP
+						</span><span class="pt-sub">/año</span>
+					</div>
+					<ul class="pt-list" *ngFor="let item of data.features" >
+						<li><i class="bi" [ngClass]="item.icon"></i> {{item.text}}</li>
+					</ul>
+				</div>
+				<div class="card-footer">
+					<button class="btn m-2" (click)="addToCart(data)">
+						<i [ngClass]="{'bi bi-cart-check': data.inCart, 'bi bi-cart-plus': !data.inCart }"></i>
+						<span class="mx-2">Comprar</span>
+					</button>
+					<button class="btn btn-danger m-2" (click)="removeFromCart(data)" *ngIf="data.inCart">
+						<i class="bi bi-trash"></i>
+					</button>
+				</div>
+			</div>
+	</div>
 </div>

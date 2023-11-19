@@ -95,12 +95,12 @@ export class SearchDomainComponent {
 
   addToCart(domain:any){
     if (!this.domainSelected.includes(domain)) this.domainSelected.push(domain)
-    this.shoppingService.setCartShopping(this.domainSelected);
+    this.shoppingService.setCartShopping(Object.assign(this.shoppingService.cartShopping,{domainList:this.domainSelected}));
   }
 
   removeToCart(domain:any){
     let index = this.domainSelected.findIndex(d => d !== domain);
     this.domainSelected.splice(index,1)
-    this.shoppingService.setCartShopping(this.domainSelected);
+    this.shoppingService.setCartShopping(Object.assign(this.shoppingService.cartShopping,{domainList:this.domainSelected}));
   }
 }

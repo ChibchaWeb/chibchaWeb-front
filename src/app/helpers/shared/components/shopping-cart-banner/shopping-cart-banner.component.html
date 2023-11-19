@@ -1,7 +1,11 @@
 <div class="container mt-4">
   <div class="selected-domains">
+    {{selectedDomains}}
     <div class="selected-info" *ngIf="selectedDomains">
-      <span>{{ selectedDomains.length }} artículos seleccionados</span>
+      <span>{{(selectedDomains['domainList'] ? selectedDomains['domainList'].length : 0)
+              +
+              (selectedDomains['hosting']? selectedDomains['hosting'].length:0)
+        }} artículos seleccionados</span>
       <span>$ {{ totalPrice.toLocaleString('es-CO') }} COP</span>
     </div>
     <!-- <button class="btn btn-success" [routerLink]="['/admin/cart']"> -->
