@@ -7,6 +7,8 @@ import { SearchDomainComponent } from './search-domain/search-domain.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { NameserversComponent } from './nameservers/nameservers.component';
 import { PanelComponent } from './panel/panel.component';
+import { ManagmentUsersComponent } from './managment-users/managment-users.component';
+
 
 const routes: Routes = [
   {
@@ -19,6 +21,7 @@ const routes: Routes = [
       { path: 'cart', component: CartSummaryComponent, },
       { path: 'tickets', component: TicketsComponent, },
       { path: 'ticket-management', component: TicketManagementComponent, },
+      { path: 'user-managment', component: ManagmentUsersComponent, },
       { path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)},
     ]
   },
