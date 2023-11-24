@@ -3,13 +3,7 @@
 		<div class="form-container sign-up">
 			<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 				<h1>Crear Cuenta</h1>
-				<div class="social-icons">
-				  <a href="#" class="icons"><i class="fa-brands fa-google-plus-g"></i></a>
-				  <a href="#" class="icons"><i class="fa-brands fa-facebook-f"></i></a>
-				  <a href="#" class="icons"><i class="fa-brands fa-github"></i></a>
-				  <a href="#" class="icons"><i class="fa-brands fa-linkedin-in"></i></a>
-				</div>
-				<span>o utilice su correo electrónico/contraseña</span>
+				<span>Utilice correo electrónico/contraseña</span>
 				<input type="text" placeholder="Name" formControlName="name">
 				<input type="email" placeholder="Email" formControlName="email">
 				<input type="password" placeholder="Password" formControlName="password">

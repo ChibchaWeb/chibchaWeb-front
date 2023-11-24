@@ -1,5 +1,6 @@
 [
   {
+      "id":1,
       "title": "Chincha Platino",
       "subTitle": "Panel de control cPanel",
 			"currency": 80000,
@@ -18,6 +19,7 @@
       ]
   },
 	{
+      "id":2,
       "title": "Chibcha Plata",
       "subTitle": "Panel de control cPanel",
 			"currency": 150000,
@@ -36,6 +38,7 @@
       ]
   },
 	{
+      "id":3,
       "title": "Chibcha Oro",
       "subTitle": "Panel de control cPanel",
 			"currency": 220000,

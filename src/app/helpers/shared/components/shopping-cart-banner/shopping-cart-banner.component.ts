@@ -21,7 +21,7 @@ export class ShoppingCartBannerComponent {
           this.selectedDomains = response
           if (response.domainList) {
             response.domainList.map(el=>{
-              this.totalPrice += el.price
+              this.totalPrice += el.costDomain
             })
           }
           if(response.hosting){
@@ -37,7 +37,7 @@ export class ShoppingCartBannerComponent {
   }
 
   calculateTotalPrice() {
-    this.totalPrice = this.selectedDomains.reduce((total, domain) => total + domain.price, 0);
+    this.totalPrice = this.selectedDomains.reduce((total, domain) => total + domain.costDomain, 0);
     this.totalPrice = this.totalPrice +this.selectedhosting.reduce((total, hosting) => total + hosting.currency, 0);
   }
 }

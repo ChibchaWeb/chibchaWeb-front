@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import domains from './../../../../assets/js/domains-list.json'
 import { ShoppingService } from '@service/shopping.service';
+import { DomainsService } from '@service/domains.service';
 
 @Component({
   selector: 'app-cart-summary',
@@ -18,13 +19,15 @@ export class CartSummaryComponent {
   iva:number=0;
   subtotal:number=0;
   jsonXML:any;
+  response:any;
 
-  constructor(private fb: FormBuilder,private shoppingService:ShoppingService) {
+  constructor(private fb: FormBuilder,private shoppingService:ShoppingService, private domainsService:DomainsService) {
     this.shoppingService.cartShopping.subscribe({
       next:(response)=>{
         this.jsonXML = Object.assign({domainList:response.domainList,hosting:response.hosting})
-        this.productSelected = response.domainList
-        this.hostingSelected = response.hosting
+        this.response = response
+        if (response.domainList) this.productSelected = response.domainList
+        if (response.hosting) this.hostingSelected = response.hosting
         if (this.productSelected) this.calcImpuestos()
       },
       complete:()=>{},
@@ -35,38 +38,37 @@ export class CartSummaryComponent {
   ngOnInit() {
   }
 
-  initItems() {
-    /* const itemsArray = this.cartForm.get('items') as FormArray;
-    this.selectedDomains.forEach(domain => {
-      itemsArray.push(this.fb.group({
-        name: [domain.name],
-        provider: [domain.provider],
-        years: [1],
-        price: [domain.price],
-        plan: ['Plan Estándar'],
-        discount: [0],
-        total: [domain.price],
-      }));
-    }); */
-  }
-
   calcImpuestos(){
     this.iva = 0
     let subtotal = 0
     this.subtotal = 0
-    if (this.productSelected && this.productSelected.domainList) {
-      this.productSelected.domainList.map(el =>{
-        this.iva += (el.price*0.19)
-        subtotal += el.price
+    if (this.productSelected) {
+      this.productSelected.map(el =>{
+        subtotal += el['costDomain']*(1-(el.discount/100))
       })
     }
-    if (this.productSelected && this.productSelected.hosting) {
-      this.productSelected.hosting.map(el =>{
-        this.iva += (el.price*0.19)
+    if (this.hostingSelected) {
+      this.hostingSelected.map(el =>{
         subtotal += el.currency
       })
     }
-    this.subtotal = subtotal - this.iva
+    this.iva = subtotal*0.19
+    this.subtotal = subtotal
+    console.log(this.iva, this.subtotal)
+  }
+
+  payment(){
+    this.productSelected.map(el =>{
+      console.log(el)
+      this.domainsService.buyDomain(el).subscribe({
+        next:(response)=>{
+          console.log(response)
+        },
+        complete:()=>{},
+        error:(err) =>{
+          console.log(err)},
+      })
+    })
   }
 
 }

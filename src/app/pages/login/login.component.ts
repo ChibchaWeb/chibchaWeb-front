@@ -31,7 +31,8 @@ export class LoginComponent {
       idDocument:['1024356987', ],
       documentType:['CC',],
       confirPassword: ['', [Validators.required, Validators.minLength(5)]],
-      phone:[3003003001,[Validators.required]],
+      phone:[30030030,[Validators.required]],
+      countryID:['1',[Validators.required]],
     },
     {
       validators:[CustomValidators.MatchValidator('password','confirPassword')]

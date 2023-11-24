@@ -69,10 +69,11 @@ export class SearchDomainComponent {
           this.existingDomains.push({
             name: `${domainName}.${tld}`,
             uso: false,
-            price: prices[randomPriceIndex],
+            costDomain: prices[randomPriceIndex],
             subtitle: subtitle[randomSubtitleIndex],
             inCart: false,
             provider: providerImage[randomProvider]['name'],
+            distributor_id: randomProvider+1,
             discount: subtitle[randomSubtitleIndex] === "Descuento del 10%" ? 10 : 0,
             providerImage:`/assets/img/clients/${providerImage[randomProvider]['img']}.png`
         });

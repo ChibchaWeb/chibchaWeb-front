@@ -11,17 +11,22 @@ export class CardHostingComponent {
   @Output() removeProduct = new EventEmitter();
   platform:any='Windows'
   discount:number =0.8
+  hostingRef:any
 
 
   addToCart(hosting: any) {
     hosting.inCart = true;
+    this.hostingRef = JSON.parse(JSON.stringify(hosting));
     let hostingNew = JSON.parse(JSON.stringify(hosting));
     hostingNew = Object.assign(hostingNew, {platform: this.platform} )
     if (hostingNew.platform === 'Linux') hostingNew.currency = hostingNew.currency*this.discount
+    if (hostingNew.platform === 'Windows') hostingNew.currency = hostingNew.currency*this.discount
     this.addProduct.emit(hostingNew)
   }
 
   removeFromCart(hosting: any) {
+    hosting = this.hostingRef
+    if (hosting.platform === 'Linux') hosting.currency = hosting.currency+((this.discount^(-1) )*hosting.currency )
     hosting.inCart = false;
     this.removeProduct.emit(hosting)
   }

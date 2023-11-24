@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 export const environment = {
   email:'chibchaweb72@gmail.com',
-  host: 'http://54.165.17.55',
+  //host: 'http://54.165.17.55',
+  host: 'http://localhost:5000',
   API_URL: 'http://fake-trello-api.herokuapp.com',
   namecom:{
     token:'f953b7162a8085dca0b9881de5c8950fe66ca10d',

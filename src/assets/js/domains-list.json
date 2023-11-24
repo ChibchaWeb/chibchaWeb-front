@@ -1,10 +1,12 @@
 [
   {
     "name": "paginaweb.com.co",
-    "price": 1000,
+    "costDomain": 1000,
     "subtitle": "Únicamente el primer año con un plazo de 2 años",
     "inCart": false,
 		"provider": ".CO",
+    "distributor_id":"1",
+    "buyout_id": 2,
 		"providerImage":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/DotCO_logo.svg/1200px-DotCO_logo.svg.png"
   },
   {

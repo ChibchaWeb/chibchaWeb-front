@@ -27,11 +27,13 @@
 										<option value="5" selected>5 Años</option>
 									</select>
 								</div> -->
-								<p class="mb-0"><strong>Total:</strong> <u>{{ item.price | currency:'COP' }}</u></p>
+								<p class="mb-0"><strong>Total:</strong> <u>{{ item['costDomain'] | currency:'COP' }}</u></p>
 								<p class="mb-0"><strong>Plan:</strong> {{ plan }}</p>
-								<p class="mb-0"><strong>Descuento:</strong> {{ discount }}%</p>
-								<p class="mb-0"><strong>Total con descuento:</strong> {{ (item.price * (1 - discount / 100)) | currency:'COP' }}</p>
+								<p class="mb-0"><strong>Descuento:</strong> {{ item.discount }}%</p>
 							</div>
+              <div class="alert alert-success" role="alert">
+								<p class="mb-0"><strong>Total con descuento:</strong> {{ (item['costDomain'] * (1 - item.discount / 100)) | currency:'COP' }}</p>
+              </div>
 						</div>
 					</div>
         </div>
@@ -84,6 +86,7 @@
             </div>
           </div>
           <!-- <app-checkout></app-checkout> -->
+          <button class="btn btn-primary" (click)="payment()">Pagar</button>
         </div>
       </div>
     </div>

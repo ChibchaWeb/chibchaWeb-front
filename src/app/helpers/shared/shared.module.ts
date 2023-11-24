@@ -11,7 +11,6 @@ import { ItemDomainComponent } from './components/item-domain/item-domain.compon
 import { FilterDomainsComponent } from './components/filter-domains/filter-domains.component';
 import { ShoppingCartBannerComponent } from './components/shopping-cart-banner/shopping-cart-banner.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PanelComponent } from '@modules/admin/panel/panel.component';
@@ -35,7 +34,6 @@ import { JsonToXmlComponent } from './components/json-to-xml/json-to-xml.compone
     FilterDomainsComponent,
     ShoppingCartBannerComponent,
     SidebarComponent,
-    CheckoutComponent,
     PaypalComponent,
     PanelComponent,
     MenuComponent,
@@ -65,7 +63,6 @@ import { JsonToXmlComponent } from './components/json-to-xml/json-to-xml.compone
     FilterDomainsComponent,
     ShoppingCartBannerComponent,
     SidebarComponent,
-    CheckoutComponent,
     PaypalComponent,
     PanelComponent,
     MenuComponent,
