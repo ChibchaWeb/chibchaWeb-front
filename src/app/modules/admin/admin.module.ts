@@ -15,6 +15,7 @@ import { NameserversComponent } from './nameservers/nameservers.component';
 import { DashboardRoutingModule } from '@modules/dashboard/dashboard-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ManagmentUsersComponent } from './managment-users/managment-users.component';
+import { HostingComponent } from './hosting/hosting.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ManagmentUsersComponent } from './managment-users/managment-users.compo
     CartSummaryComponent,
     CardsOptionsComponent,
     NameserversComponent,
+    HostingComponent,
   ],
   imports: [
     CommonModule,

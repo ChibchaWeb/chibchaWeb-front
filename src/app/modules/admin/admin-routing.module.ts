@@ -8,7 +8,7 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { NameserversComponent } from './nameservers/nameservers.component';
 import { PanelComponent } from './panel/panel.component';
 import { ManagmentUsersComponent } from './managment-users/managment-users.component';
-
+import { HostingComponent } from './hosting/hosting.component';
 
 const routes: Routes = [
   {
@@ -19,6 +19,7 @@ const routes: Routes = [
       { path: 'search', component: SearchDomainComponent, },
       { path: 'nameservers', component: NameserversComponent, },
       { path: 'cart', component: CartSummaryComponent, },
+      { path: 'hosting', component: HostingComponent, },
       { path: 'tickets', component: TicketsComponent, },
       { path: 'ticket-management', component: TicketManagementComponent, },
       { path: 'user-managment', component: ManagmentUsersComponent, },
