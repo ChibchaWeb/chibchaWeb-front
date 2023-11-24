@@ -5,11 +5,10 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-export interface usuario {
-  nombre: string;
-  id: number;
-  correo: string;
-}
+import {MatExpansionModule} from '@angular/material/expansion';
+import { usuario } from '@interfaces/usuario';
+
+
 
 const list_usuarios: usuario[] = [
   {id: 1, nombre: 'Juan', correo: "Juan@gmail.com"},
@@ -26,7 +25,7 @@ const list_usuarios: usuario[] = [
   templateUrl: './managment-users.component.html',
   styleUrls: ['./managment-users.component.scss'],
   standalone: true,
-  imports: [MatTableModule,MatIconModule, MatSortModule, MatInputModule, MatFormFieldModule, MatPaginatorModule],
+  imports: [MatTableModule,MatIconModule, MatSortModule, MatInputModule, MatFormFieldModule, MatPaginatorModule, MatExpansionModule],
 })
 
 export class ManagmentUsersComponent {

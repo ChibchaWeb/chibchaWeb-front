@@ -16,6 +16,11 @@ import { DashboardRoutingModule } from '@modules/dashboard/dashboard-routing.mod
 import { HttpClientModule } from '@angular/common/http';
 import { ManagmentUsersComponent } from './managment-users/managment-users.component';
 import { HostingComponent } from './hosting/hosting.component';
+import { ExpansionTableComponent } from './expansion-table/expansion-table.component';
+import { MatIconModule } from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,8 @@ import { HostingComponent } from './hosting/hosting.component';
     CartSummaryComponent,
     CardsOptionsComponent,
     NameserversComponent,
-    HostingComponent,
+    ExpansionTableComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -37,7 +43,13 @@ import { HostingComponent } from './hosting/hosting.component';
     ReactiveFormsModule,
     HttpClientModule,
     DashboardRoutingModule,
-    ManagmentUsersComponent
-  ]
+    ManagmentUsersComponent,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonModule,
+  ],
+  bootstrap: [ExpansionTableComponent]
+
 })
 export class AdminModule { }
