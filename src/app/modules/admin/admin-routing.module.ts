@@ -8,6 +8,7 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { NameserversComponent } from './nameservers/nameservers.component';
 import { PanelComponent } from './panel/panel.component';
 import { ManagmentUsersComponent } from './managment-users/managment-users.component';
+import { ExpansionTableComponent } from './expansion-table/expansion-table.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'tickets', component: TicketsComponent, },
       { path: 'ticket-management', component: TicketManagementComponent, },
       { path: 'user-managment', component: ManagmentUsersComponent, },
+      { path: 'user-detail', component: ExpansionTableComponent, },
       { path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)},
     ]
   },

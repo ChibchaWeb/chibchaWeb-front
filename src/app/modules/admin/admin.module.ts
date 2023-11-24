@@ -15,6 +15,11 @@ import { NameserversComponent } from './nameservers/nameservers.component';
 import { DashboardRoutingModule } from '@modules/dashboard/dashboard-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ManagmentUsersComponent } from './managment-users/managment-users.component';
+import { ExpansionTableComponent } from './expansion-table/expansion-table.component';
+import { MatIconModule } from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,8 @@ import { ManagmentUsersComponent } from './managment-users/managment-users.compo
     CartSummaryComponent,
     CardsOptionsComponent,
     NameserversComponent,
+    ExpansionTableComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -35,7 +42,13 @@ import { ManagmentUsersComponent } from './managment-users/managment-users.compo
     ReactiveFormsModule,
     HttpClientModule,
     DashboardRoutingModule,
-    ManagmentUsersComponent
-  ]
+    ManagmentUsersComponent,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonModule,
+  ],
+  bootstrap: [ExpansionTableComponent]
+
 })
 export class AdminModule { }
