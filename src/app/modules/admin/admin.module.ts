@@ -14,6 +14,7 @@ import { CardsOptionsComponent } from '../../helpers/shared/components/cards-opt
 import { NameserversComponent } from './nameservers/nameservers.component';
 import { DashboardRoutingModule } from '@modules/dashboard/dashboard-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HostingComponent } from './hosting/hosting.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     CartSummaryComponent,
     CardsOptionsComponent,
     NameserversComponent,
+    HostingComponent,
   ],
   imports: [
     CommonModule,
