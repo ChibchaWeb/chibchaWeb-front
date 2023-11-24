@@ -32,7 +32,7 @@ import { MatButtonModule } from '@angular/material/button';
     CardsOptionsComponent,
     NameserversComponent,
     ExpansionTableComponent,
-    
+    HostingComponent,
   ],
   imports: [
     CommonModule,
