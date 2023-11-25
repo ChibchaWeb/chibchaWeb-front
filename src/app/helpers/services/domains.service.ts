@@ -42,8 +42,8 @@ export class DomainsService {
 		const auth = btoa(`admin@gmail.com:Administrador#2045`);
 		const headers = new HttpHeaders({
 			'Content-Type': 'application/json',
-			'Authorization': `Basic ${this.tokenService.getToken()}`
-			//'Authorization': `Bearer ${auth}`
+			//'Authorization': `Basic ${this.tokenService.getToken()}`
+			'Authorization': `Bearer ${auth}`
 		});
 
 		return this.http.post(`${this.apiUrl}/domains/`,data,{ headers })
