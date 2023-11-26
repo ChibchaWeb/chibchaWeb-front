@@ -8,6 +8,9 @@
 				<input type="email" placeholder="Email" formControlName="email">
 				<input type="password" placeholder="Password" formControlName="password">
 				<input type="password" placeholder="Confir Password" formControlName="confirPassword">
+				<select class="form-select" aria-label="" id="countries" formControlName="countryID">
+					<option *ngFor="let item of countriesList" [value]="item.id">{{item.name}}</option>
+				</select>
 				<button type="submit" *ngIf="signupForm.valid">Sign Up</button>
 			</form>
 		</div>

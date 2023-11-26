@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@service/auth.service';
 import { ConnectionService } from '@service/connection.service';
+import { QueriesService } from '@service/queries.service';
 import { CustomValidators } from '@utils/validators';
 import { RequestStatus } from 'src/app/helpers/models/request-status';
 
@@ -16,12 +17,20 @@ export class LoginComponent {
   loginForm: FormGroup;
   isCreateAccount:boolean = false
   status:RequestStatus='init'
+  countriesList: any;
 
   constructor(private connectionService:ConnectionService,
     private fb: FormBuilder,
     private router: Router,
     private authService:AuthService,
-    ){}
+    private queriesService:QueriesService
+    ){
+      this.queriesService.getCountries().subscribe({
+        next:(response)=>{
+          this.countriesList = response
+        }
+      })
+    }
 
   ngOnInit() {
     this.signupForm = this.fb.nonNullable.group({

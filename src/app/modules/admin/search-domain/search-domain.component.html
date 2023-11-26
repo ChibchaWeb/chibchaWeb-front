@@ -21,14 +21,14 @@
     <div class="tab-pane" [class.active]="activeTab === 'resultados'">
 			<div class="container" *ngIf="domains.length>0">
         <app-cards-options (addProduct)="addToCart($event)" (removeProduct)="removeToCart($event)" ></app-cards-options>
-				<app-item-domain [isExist]="isDomainExist" (addProduct)="addToCart($event)" (removeProduct)="removeToCart($event)" *ngFor="let item of domains" [domain]="item"></app-item-domain>
+				<app-item-domain [isExist]="isDomainExist" (addProduct)="addToCart($event)" (removeProduct)="removeToCart($event)"class="col-12 col-md-4 animate__animated " [ngClass]="['animate__delay-'+idx+'s', idx/2===0 ? 'animate__lightSpeedInRight':'animate__lightSpeedInLeft']" *ngFor="let item of domains; index as idx" [domain]="item"></app-item-domain>
 			</div>
     </div>
     <div class="tab-pane" [class.active]="activeTab === 'filtrar'">
 			<app-filter-domains [domains]="domains" (domainsFiltered)="newDomainList = $event"></app-filter-domains>
 			<div class="container" *ngIf="newDomainList && newDomainList.length>0">
         <app-cards-options (addProduct)="addToCart($event)" (removeProduct)="removeToCart($event)" ></app-cards-options>
-				<app-item-domain (addProduct)="addToCart($event)" (removeProduct)="removeToCart($event)" *ngFor="let item of newDomainList" [domain]="item"></app-item-domain>
+				<app-item-domain (addProduct)="addToCart($event)" (removeProduct)="removeToCart($event)" class="col-12 col-md-4 animate__animated " [ngClass]="['animate__delay-'+idx+'s', idx/2===0 ? 'animate__lightSpeedInRight':'animate__lightSpeedInLeft']" *ngFor="let item of newDomainList; index as idx" [domain]="item"></app-item-domain>
 			</div>
 			<div class="container" *ngIf="!newDomainList || newDomainList.length<=0">
 				<div class="text-center">
