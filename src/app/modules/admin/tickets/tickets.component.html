@@ -21,24 +21,24 @@
     </div>
 
     <div class="form-group mb-3">
-      <label for="departamento">Departamento</label>
+      <label for="departamento">Estado</label>
       <select class="form-select" id="departamento" formControlName="state">
-        <option value="soporte">Soporte</option>
-        <option value="otros">Otros</option>
+        <option value="false">Sin atender</option>
+        <option value="true">Solucionado</option>
       </select>
     </div>
 
     <div class="form-group mb-3">
       <label for="servicios">Servicios relacionados</label>
-      <input type="text" class="form-control" id="servicios" formControlName="servicios" placeholder="Servicios relacionados">
+      <input type="text" class="form-control" id="servicios" formControlName="services" placeholder="Servicios relacionados">
     </div>
 
     <div class="form-group mb-3">
       <label for="prioridad">Prioridad</label>
       <select class="form-select" id="prioridad" formControlName="priority">
-        <option value="baja">Baja</option>
-        <option value="media">Media</option>
-        <option value="alta">Alta</option>
+        <option value="1">Baja</option>
+        <option value="2">Media</option>
+        <option value="3">Alta</option>
       </select>
     </div>
 

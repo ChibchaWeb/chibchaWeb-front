@@ -47,9 +47,9 @@ export class TicketsComponent {
       //nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       //email: ['', [Validators.required, Validators.email]],
       description: ['', [Validators.required, Validators.maxLength(100)]],
-      state: ['soporte', [Validators.required]],
-      servicios: [''],
-      priority: ['baja', [Validators.required]],
+      state: [false, [Validators.required]],
+      services: [''],
+      priority: [1, [Validators.required]],
       message: ['', [Validators.required, Validators.maxLength(500)]],
       //adjunto: [''],
       //user_id
@@ -84,6 +84,12 @@ export class TicketsComponent {
     if (this.ticketForm.valid) {
       //this.ticketForm.patchValue({id: uuidv4()});
       //console.log(this.ticketForm.value);
+      const priorityValue = +this.ticketForm.get('priority').value;
+      const stateValue = this.ticketForm.get('state').value === 'true';
+      this.ticketForm.patchValue({
+        priority: priorityValue,
+        state: stateValue
+      });
       this.ticketsService.createTicket(this.ticketForm.value).subscribe({
         next:(response)=>{
           console.log(response)

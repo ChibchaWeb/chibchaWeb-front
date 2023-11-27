@@ -1,0 +1,13 @@
+<form [formGroup]="tarjetaForm" (ngSubmit)="enviarFormulario()">
+    <div>
+        <label for="numeroTarjeta">Número de Tarjeta:</label>
+        <input type="text" id="numeroTarjeta" formControlName="numeroTarjeta">
+        <div *ngIf="tarjetaForm.get('numeroTarjeta').hasError('tarjetaInvalida')">
+            Número de tarjeta inválido.
+        </div>
+    </div>
+
+    <!-- Otros campos del formulario -->
+
+    <button type="submit" [disabled]="!tarjetaForm.valid">Enviar</button>
+</form>

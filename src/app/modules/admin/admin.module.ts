@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
+import { CreditCardManagmentComponent } from './credit-card-managment/credit-card-managment.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MatButtonModule } from '@angular/material/button';
     NameserversComponent,
     ExpansionTableComponent,
     HostingComponent,
+    CreditCardManagmentComponent,
   ],
   imports: [
     CommonModule,
