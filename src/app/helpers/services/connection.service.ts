@@ -16,4 +16,6 @@ export class ConnectionService {
   loginUser(data:any){
     return this.http.post(env.host+'login/',data)
   }
+
+  
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { QueriesService } from '@service/queries.service';
 
 @Component({
   selector: 'app-card-hosting',
@@ -9,10 +10,18 @@ export class CardHostingComponent {
   @Input('data') data:any;
   @Output() addProduct = new EventEmitter();
   @Output() removeProduct = new EventEmitter();
-  platform:any='Windows'
+  platform:any=[]
+  platformSelected:any=1
   discount:number =0.8
   hostingRef:any
 
+  constructor( private queriesService:QueriesService){    
+    this.queriesService.getPlatforms().subscribe({
+      next:(request)=>{
+        this.platform = request
+      }
+    })
+  }
 
   addToCart(hosting: any) {
     hosting.inCart = true;

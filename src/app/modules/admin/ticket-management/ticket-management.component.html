@@ -1,5 +1,9 @@
-<div class="mat-elevation-z8 mb-5">
-  <table mat-table [dataSource]="tickets" class="mat-elevation-z8">
+
+<div class="container my-3">
+  <a class="btn btn-primary" [routerLink]="['/admin/tickets']">Crear ticket</a>
+</div>
+<div class="mat-elevation-z8 mb-5" >
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- Cod Ticket -->
     <ng-container matColumnDef="id">
@@ -11,16 +15,25 @@
     <!-- Asunto -->
     <ng-container matColumnDef="asunto">
       <th mat-header-cell *matHeaderCellDef>Asunto</th>
-      <td mat-cell *matCellDef="let ticket">{{ ticket.title }}</td>
+      <td mat-cell *matCellDef="let ticket">{{ ticket.description }}</td>
     </ng-container>
     <!-- ./Asunto -->
 
-    <!-- Estado-->
+    <!-- mensaje -->
+    <ng-container matColumnDef="mensaje">
+      <th mat-header-cell *matHeaderCellDef>Mensaje</th>
+      <td mat-cell *matCellDef="let ticket">{{ ticket.message }}</td>
+    </ng-container>
+    <!-- ./mensaje -->
+
+    <!-- Estado -->
     <ng-container matColumnDef="estado">
       <th mat-header-cell *matHeaderCellDef>Estado</th>
-      <td mat-cell *matCellDef="let ticket">{{ ticket.status }}</td>
+      <td mat-cell *matCellDef="let ticket">
+        {{ ticket.priority ? 'Solucionado' : 'Sin atender' }}
+      </td>
     </ng-container>
-    <!-- ./Estado-->
+    <!-- ./Estado -->
 
     <!-- Acciones -->
     <ng-container matColumnDef="acciones">
@@ -35,6 +48,7 @@
       </td>
     </ng-container>
     <!-- ./Acciones -->
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     <!-- Paginación -->
@@ -45,4 +59,3 @@
     ></mat-paginator>
   </table>
 </div>
-<!-- <app-table></app-table> -->

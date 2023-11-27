@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { QueriesService } from '@service/queries.service';
+import { TicketsService } from '@service/tickets.service';
 import { v4 as uuidv4 } from 'uuid';
 //import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 //import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
@@ -39,24 +41,55 @@ export class TicketsComponent {
   }
   ticketForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private ticketsService:TicketsService, private queriesService:QueriesService) {
     this.ticketForm = this.fb.group({
-      id:[null],
-      nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      email: ['', [Validators.required, Validators.email]],
-      asunto: ['', [Validators.required, Validators.maxLength(100)]],
-      departamento: ['soporte', [Validators.required]],
-      servicios: [''],
-      prioridad: ['baja', [Validators.required]],
-      mensaje: ['', [Validators.required, Validators.maxLength(500)]],
-      adjunto: [''],
+      //id:[null],
+      //nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      //email: ['', [Validators.required, Validators.email]],
+      description: ['', [Validators.required, Validators.maxLength(100)]],
+      state: [false, [Validators.required]],
+      services: [''],
+      priority: [1, [Validators.required]],
+      message: ['', [Validators.required, Validators.maxLength(500)]],
+      //adjunto: [''],
+      //user_id
     });
+    this.queriesService.getCategories().subscribe({
+      next:(request)=>{
+        console.log(request)
+      }
+    })
+    this.queriesService.getCountries().subscribe({
+      next:(request)=>{
+        console.log(request)
+      }
+    })
+    this.queriesService.getPlans().subscribe({
+      next:(request)=>{
+        console.log(request)
+      }
+    })
+    this.queriesService.getRoles().subscribe({
+      next:(request)=>{
+        console.log(request)
+      }
+    })
   }
-
   onSubmit() {
     if (this.ticketForm.valid) {
-      this.ticketForm.patchValue({id: uuidv4()});
-      console.log(this.ticketForm.value);
+      //this.ticketForm.patchValue({id: uuidv4()});
+      //console.log(this.ticketForm.value);
+      const priorityValue = +this.ticketForm.get('priority').value;
+      const stateValue = this.ticketForm.get('state').value === 'true';
+      this.ticketForm.patchValue({
+        priority: priorityValue,
+        state: stateValue
+      });
+      this.ticketsService.createTicket(this.ticketForm.value).subscribe({
+        next:(response)=>{
+          console.log(response)
+        },
+      })
     }
   }
 

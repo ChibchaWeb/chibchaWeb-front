@@ -24,6 +24,7 @@ export class AuthService {
         this.tokenService.saveToken(response['Token'])
         this.storageService.saveRol(response['Rol'])
         this.storageService.saveUser(response['Name'])
+        this.storageService.saveUserID(response['id'])
       })
     )
   }
@@ -33,8 +34,8 @@ export class AuthService {
   {"name":"prueba","email":"prueba@gmail.com","avatar":"https://api.lorem.space/image/face?w=480&h=480&r=7741","id":9,"creationAt":"2023-11-18T21:40:10.000Z","updatedAt":"2023-11-18T21:40:10.000Z"}
   */
   register(data:RegisterData):any{
-    return this.http.post(`${this.apiUrl}/api/v1/auth/register`,data)
-    //return this.http.post(`${env.host}/create/`,data)
+    //return this.http.post(`${this.apiUrl}/api/v1/auth/register`,data)
+    return this.http.post(`${env.host}/create/`,data)
   }
 
   registerAndLogin(dataRegister:RegisterData){
@@ -42,5 +43,13 @@ export class AuthService {
     .pipe(
       switchMap(()=>this.login(dataRegister))
     )
+  }
+
+  logout():any{
+    return this.http.get(`${env.host}/logout/`)
+  }
+
+  getRoles(){
+    return this.http.get(`${env.host}/rols/`)
   }
 }

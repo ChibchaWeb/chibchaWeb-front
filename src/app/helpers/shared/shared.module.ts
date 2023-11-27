@@ -23,6 +23,9 @@ import { ButtonComponent } from './components/button/button.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CardHostingComponent } from './components/card-hosting/card-hosting.component';
 import { JsonToXmlComponent } from './components/json-to-xml/json-to-xml.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { SkeletonCardComponent } from './components/skeleton-card/skeleton-card.component';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { JsonToXmlComponent } from './components/json-to-xml/json-to-xml.compone
     ButtonComponent,
     CardHostingComponent,
     JsonToXmlComponent,
+    LoaderComponent,
+    SkeletonCardComponent,
+    CreditCardComponent,
   ],
   imports: [
     CommonModule,
@@ -73,6 +79,9 @@ import { JsonToXmlComponent } from './components/json-to-xml/json-to-xml.compone
     ButtonComponent,
     CardHostingComponent,
     JsonToXmlComponent,
+    LoaderComponent,
+    SkeletonCardComponent,
+    CreditCardComponent,
   ]
 })
 export class SharedModule { }

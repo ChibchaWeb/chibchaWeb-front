@@ -1,10 +1,10 @@
 <div class="container">
   <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
-    <div class="row mb-3">
+    <!--<div class="row mb-3">
       <div class="col-md-6">
         <div class="form-group">
           <label for="nombre">Nombre</label>
-          <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre" required>
+          <input type="text" class="form-control" id="nombre" formControlName="description" placeholder="Nombre" required>
         </div>
       </div>
       <div class="col-md-6">
@@ -13,45 +13,45 @@
           <input type="email" class="form-control" id="email" formControlName="email" placeholder="E-mail" required>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <div class="form-group mb-3">
       <label for="asunto">Asunto</label>
-      <input type="text" class="form-control" id="asunto" formControlName="asunto" placeholder="Asunto" required>
+      <input type="text" class="form-control" id="asunto" formControlName="description" placeholder="Asunto" required>
     </div>
 
     <div class="form-group mb-3">
-      <label for="departamento">Departamento</label>
-      <select class="form-select" id="departamento" formControlName="departamento">
-        <option value="soporte">Soporte</option>
-        <option value="otros">Otros</option>
+      <label for="departamento">Estado</label>
+      <select class="form-select" id="departamento" formControlName="state">
+        <option value="false">Sin atender</option>
+        <option value="true">Solucionado</option>
       </select>
     </div>
 
     <div class="form-group mb-3">
       <label for="servicios">Servicios relacionados</label>
-      <input type="text" class="form-control" id="servicios" formControlName="servicios" placeholder="Servicios relacionados">
+      <input type="text" class="form-control" id="servicios" formControlName="services" placeholder="Servicios relacionados">
     </div>
 
     <div class="form-group mb-3">
       <label for="prioridad">Prioridad</label>
-      <select class="form-select" id="prioridad" formControlName="prioridad">
-        <option value="baja">Baja</option>
-        <option value="media">Media</option>
-        <option value="alta">Alta</option>
+      <select class="form-select" id="prioridad" formControlName="priority">
+        <option value="1">Baja</option>
+        <option value="2">Media</option>
+        <option value="3">Alta</option>
       </select>
     </div>
 
     <div class="form-group mb-3">
       <label for="mensaje">Mensaje</label>
-      <textarea class="form-control" id="editor" formControlName="mensaje" rows="4" placeholder="Mensaje"></textarea>
+      <textarea class="form-control" id="editor" formControlName="message" rows="4" placeholder="Mensaje"></textarea>
 			<!-- <ckeditor [editor]="Editor" [data]="predefinedMessage"></ckeditor> -->
     </div>
 
-    <div class="form-group">
+    <!--<div class="form-group">
       <label for="adjunto">Adjunto</label>
       <input type="file" class="form-control" id="adjunto">
-    </div>
+    </div>-->
 
     <button type="submit" class="btn btn-primary mt-3">Enviar</button>
   </form>
