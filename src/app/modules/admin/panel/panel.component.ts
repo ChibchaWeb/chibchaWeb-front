@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TicketsService } from '@service/tickets.service';
 
 @Component({
   selector: 'app-panel',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./panel.component.scss']
 })
 export class PanelComponent {
-    searchText: any;
+  searchText: any;
+  tokenCount:number=0
+
+  constructor(private ticketsService:TicketsService,){
+    this.ticketsService.getTickets().subscribe({
+      next:(response)=>{
+        this.tokenCount = response['length'];
+      }
+    })
+  }
 }

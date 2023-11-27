@@ -12,6 +12,7 @@ import { ManagmentUsersComponent } from './managment-users/managment-users.compo
 import { HostingComponent } from './hosting/hosting.component';
 import { ExpansionTableComponent } from './expansion-table/expansion-table.component';
 import { CreditCardComponent } from '@shared/components/credit-card/credit-card.component';
+import { TicketsDetailsComponent } from './tickets-details/tickets-details.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'hosting', component: HostingComponent, },
       { path: 'tickets', component: TicketsComponent, },
       { path: 'ticket-management', component: TicketManagementComponent, },
+      { path: 'ticket-detail/:id', component: TicketsDetailsComponent, },
       { path: 'user-managment', component: ManagmentUsersComponent, },
       { path: 'user-detail', component: ExpansionTableComponent, },
       { path: 'buy-register', component: BuyRegisterComponent, },

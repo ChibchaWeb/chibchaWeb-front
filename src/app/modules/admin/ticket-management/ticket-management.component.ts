@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import tickets from './../../../../assets/js/tickets-list.json'
 import { MatTableDataSource } from '@angular/material/table';
 import { TicketsService } from '@service/tickets.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticket-management',
@@ -15,7 +16,7 @@ export class TicketManagementComponent {
   pageSizeOptions: number[] = [5, 10, 20];
   pageSize = 5;
 
-  constructor(private ticketsService:TicketsService,){
+  constructor(private ticketsService:TicketsService,private router: Router){
     this.ticketsService.getTickets().subscribe({
       next:(response)=>{
         console.log(response)
@@ -25,6 +26,7 @@ export class TicketManagementComponent {
   }
 
   verDetalles(ticket: any) {
+    this.router.navigate(['/admin/ticket-detail/', ticket.id]);
   }
 
   cambiarEstado(ticket: any) {

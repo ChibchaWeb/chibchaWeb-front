@@ -13,7 +13,7 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { CardsOptionsComponent } from '../../helpers/shared/components/cards-options/cards-options.component';
 import { NameserversComponent } from './nameservers/nameservers.component';
 import { DashboardRoutingModule } from '@modules/dashboard/dashboard-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ManagmentUsersComponent } from './managment-users/managment-users.component';
 import { HostingComponent } from './hosting/hosting.component';
 import { ExpansionTableComponent } from './expansion-table/expansion-table.component';
@@ -22,6 +22,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { CreditCardManagmentComponent } from './credit-card-managment/credit-card-managment.component';
+import { TicketsDetailsComponent } from './tickets-details/tickets-details.component';
+import { AuthInterceptorService } from '@service/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { CreditCardManagmentComponent } from './credit-card-managment/credit-car
     ExpansionTableComponent,
     HostingComponent,
     CreditCardManagmentComponent,
+    TicketsDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -51,7 +54,14 @@ import { CreditCardManagmentComponent } from './credit-card-managment/credit-car
     MatPaginatorModule,
     MatButtonModule,
   ],
-  bootstrap: [ExpansionTableComponent]
+  bootstrap: [ExpansionTableComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
 
 })
 export class AdminModule { }

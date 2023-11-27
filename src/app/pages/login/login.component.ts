@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@service/auth.service';
-import { ConnectionService } from '@service/connection.service';
 import { QueriesService } from '@service/queries.service';
 import { CustomValidators } from '@utils/validators';
 import { RequestStatus } from 'src/app/helpers/models/request-status';
@@ -19,7 +18,7 @@ export class LoginComponent {
   status:RequestStatus='init'
   countriesList: any;
 
-  constructor(private connectionService:ConnectionService,
+  constructor(
     private fb: FormBuilder,
     private router: Router,
     private authService:AuthService,

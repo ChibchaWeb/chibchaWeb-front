@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService } from '@service/storage.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls:[ './menu.component.scss']
 })
 export class MenuComponent {
+  username:string='Anónimo'
 
+  constructor(private storageService:StorageService){
+    this.username = this.storageService.getUser()
+  }
 }
