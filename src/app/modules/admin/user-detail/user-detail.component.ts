@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { CreditCardsService } from '@service/credit-cards.service';
 import { UsersService } from '@service/users.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { UsersService } from '@service/users.service';
 export class UserDetailComponent {
   response:any = {}
 
-  constructor(private route: ActivatedRoute,private usersService:UsersService,
+  constructor(private route: ActivatedRoute,public usersService:UsersService,
+    private creditCardsService:CreditCardsService,
     private router: Router){  }
 
   ngOnInit() {
@@ -29,13 +31,7 @@ export class UserDetailComponent {
     })
   }
 
-  maskCreditCard(creditCard: string): string {
-    if (creditCard && creditCard.length >= 4) {
-      // Obtén los últimos 4 dígitos
-      const lastFourDigits = creditCard.slice(-4);
-      const maskedCreditCard = '*'.repeat(creditCard.length - 4) + lastFourDigits;
-      return maskedCreditCard;
-    }
-    return creditCard;
+  maskCreditCard(creditCardNumber:any):string{
+    return this.creditCardsService.maskCreditCard(creditCardNumber)
   }
 }
