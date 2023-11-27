@@ -32,14 +32,14 @@ export class TicketsService {
   }
 
   getTicket(id:any){
-    return this.http.get(`${this.apiUrl}/ticket/${id}`)
+    return this.http.get(`${this.apiUrl}/ticket/${id}`, { headers: this.headers })
   }
 
   updateTicket(id:any, payload:any){
-    return this.http.patch(`${this.apiUrl}/ticket/${id}`, payload)
+    return this.http.patch(`${this.apiUrl}/ticket/${id}`, payload, { headers: this.headers })
   }
 
   deleteTicket(id:any){
-    return this.http.delete(`${this.apiUrl}/ticket/${id}`)
+    return this.http.delete(`${this.apiUrl}/ticket/${id}`, { headers: this.headers })
   }
 }

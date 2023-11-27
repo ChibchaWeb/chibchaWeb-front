@@ -24,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CreditCardManagmentComponent } from './credit-card-managment/credit-card-managment.component';
 import { TicketsDetailsComponent } from './tickets-details/tickets-details.component';
 import { AuthInterceptorService } from '@service/auth-interceptor.service';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AuthInterceptorService } from '@service/auth-interceptor.service';
     HostingComponent,
     CreditCardManagmentComponent,
     TicketsDetailsComponent,
+    UserDetailComponent,
   ],
   imports: [
     CommonModule,

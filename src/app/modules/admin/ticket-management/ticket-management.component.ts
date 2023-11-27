@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import tickets from './../../../../assets/js/tickets-list.json'
-import { MatTableDataSource } from '@angular/material/table';
 import { TicketsService } from '@service/tickets.service';
 import { Router } from '@angular/router';
 

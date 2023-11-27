@@ -13,6 +13,7 @@ import { HostingComponent } from './hosting/hosting.component';
 import { ExpansionTableComponent } from './expansion-table/expansion-table.component';
 import { CreditCardComponent } from '@shared/components/credit-card/credit-card.component';
 import { TicketsDetailsComponent } from './tickets-details/tickets-details.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,7 @@ const routes: Routes = [
       { path: 'ticket-management', component: TicketManagementComponent, },
       { path: 'ticket-detail/:id', component: TicketsDetailsComponent, },
       { path: 'user-managment', component: ManagmentUsersComponent, },
-      { path: 'user-detail', component: ExpansionTableComponent, },
+      { path: 'user-detail/:id', component: UserDetailComponent, },
       { path: 'buy-register', component: BuyRegisterComponent, },
       { path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)},
     ]
