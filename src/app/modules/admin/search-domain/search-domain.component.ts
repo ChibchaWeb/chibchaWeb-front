@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import domains from './../../../../assets/js/domains-list.json'
 import { DomainsService } from '@service/domains.service';
 import { ShoppingService } from '@service/shopping.service';
+import { UsersService } from '@service/users.service';
+import { StorageService } from '@service/storage.service';
 const providerImage = [
   {name:".CO", img:'client-1'},
   {name:".com", img:'client-2'},
@@ -13,7 +15,20 @@ const providerImage = [
   {name:".site", img:'client-7'},
   {name:".store", img:'client-8'},
   {name:".xyz", img:'client-9'}]
-const suggestedDomains = ['com', 'co', 'org', 'edu', 'mil', 'net', 'xyz', 'info', 'com.co'];
+let suggestedDomains = ['com', 'org', 'edu', 'mil', 'net', 'xyz', 'info'];
+const domainsCountries = [
+  { pais: 'Argentina', domain: 'ar' },
+  { pais: 'Brazil', domain: 'br' },
+  { pais: 'Canada', domain: 'ca' },
+  { pais: 'China', domain: 'cn' },
+  { pais: 'Colombia', domain: 'co' },
+  { pais: 'France', domain: 'fr' },
+  { pais: 'Germany', domain: 'de' },
+  { pais: 'India', domain: 'in' },
+  { pais: 'Italy', domain: 'it' },
+  { pais: 'Japan', domain: 'jp' },
+  { pais: 'United States', domain: 'us' }
+];
 const prices =[52500,54500,49500,98500,47500]
 const subtitle =["Únicamente el primer año con un plazo de 2 años","Por el primer año","Oferta especial","Descuento del 10%"]
 
@@ -32,12 +47,13 @@ export class SearchDomainComponent {
   listdomains: any = [];
   existingDomains: any[] = [];
   domainExistsInWhois:any=null;
+  countryUser:any
 
   constructor(private fb: FormBuilder,
   private domainsService:DomainsService,
-  private shoppingService:ShoppingService) {
+  private shoppingService:ShoppingService,public usersService:UsersService, private storageService:StorageService) {
     this.searchForm = this.fb.group({
-      searchQuery: ['']
+      searchQuery: ['', [Validators.required, this.customDotValidator()]]
     });
     this.shoppingService.cartShopping.subscribe({
       next:(response)=>{
@@ -46,6 +62,48 @@ export class SearchDomainComponent {
       complete:()=>{},
       error:(err)=>{}
     })
+    this.getUserDetail()
+  }
+
+  /**
+   * Validar pais del usuario para ofrecer únicamente los dominios de ese país
+   */
+  getUserDetail(){
+    this.usersService.getUserDetails(this.storageService.getUserID()).subscribe({
+      next:(response)=>{
+        this.countryUser = response['country'].name
+      }, complete:()=>{
+        let index = domainsCountries.findIndex(el => el['pais'] == this.countryUser)
+        suggestedDomains.map(el => {
+          suggestedDomains.push(`${el}.${domainsCountries[index].domain}`)
+        })
+        suggestedDomains.push(domainsCountries[index].domain)
+      },
+      error:(err)=>{
+        console.error(err)
+      }
+    })
+  }
+
+  // Función de validación personalizada de formulario de búsqueda
+  private customDotValidator() {
+    return (control) => {
+      const value = control.value as string;
+      if (value && !value.includes('.')) {
+        return { noDot: true };
+      }
+      return null;
+    };
+  }
+  getErrorMessage() {
+    const control = this.searchForm.get('searchQuery');
+    if (control.hasError('required')) {
+      return 'Este campo es requerido.';
+    }
+    if (control.hasError('noDot')) {
+      return 'Debe contener al menos un punto.';
+    }
+    return '';
   }
 
   onSubmit() {

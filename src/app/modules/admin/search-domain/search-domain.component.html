@@ -3,7 +3,7 @@
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="Buscar" formControlName="searchQuery">
-      <button class="btn btn-primary" type="submit">
+      <button class="btn btn-primary" type="submit" *ngIf="searchForm.valid">
         <i class="bi bi-search"></i>
       </button>
     </div>

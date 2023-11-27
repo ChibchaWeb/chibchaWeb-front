@@ -69,11 +69,6 @@ export class TicketsComponent {
         console.log(request)
       }
     })
-    this.queriesService.getPlatforms().subscribe({
-      next:(request)=>{
-        console.log(request)
-      }
-    })
     this.queriesService.getRoles().subscribe({
       next:(request)=>{
         console.log(request)

@@ -13,7 +13,7 @@
 					<div class="pt-price-block">
 						<span class="pt-currency"></span>
 						<span class="pt-price-main" *ngIf="data.cost_per_year">
-							<span class="pt-subprice">$</span>{{platform === 'Linux' ? (data.cost_per_year*discount).toLocaleString('es-CO'):data.cost_per_year.toLocaleString('es-CO')}} COP
+							<span class="pt-subprice">$</span>{{platformSelected.id === 2 ? (data.cost_per_year*discount).toLocaleString('es-CO'):data.cost_per_year.toLocaleString('es-CO')}} COP
 						</span><span class="pt-sub">/año</span>
 					</div>
 					<ul class="pt-list" >
@@ -29,16 +29,13 @@
 						<li><i class="bi bi bi-upload"></i> {{data.backups}}</li>
 						<li><i class="bi bi bi-lock"></i> {{data.free_ssl}}</li>
 					</ul>
-					<ul class="pt-list">
+					<ul class="pt-list" *ngIf="platform">
 						<li>
 							<i class="bi bi-server"></i>
 							<label for="platform">Plataforma</label>
-							<select [(ngModel)]="platform" id="platform" class="form-select" >
-								<option value="Windows">
-									<span><i class="bi bi-windows"></i> Windows</span>
-								</option>
-								<option value="Linux">
-									<span><i class="bi bi-linux"></i> Linux</span>
+							<select [(ngModel)]="platformSelected" id="platform" class="form-select" >
+								<option [value]="item.id" *ngFor="let item of platform">
+									<span><i class="bi bi-windows"></i> {{item.name}}</span>
 								</option>
 							</select>
 						</li>
