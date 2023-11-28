@@ -10,7 +10,7 @@ export class CuadrosComponent {
   @Input() boton:String = "";
   @Input() def:String = "";
   @Input() clase:String = "";
-  @Input() content:String[] = [];
+  @Input() content:any;
 
 
 }

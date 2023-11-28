@@ -26,6 +26,7 @@ import { JsonToXmlComponent } from './components/json-to-xml/json-to-xml.compone
 import { LoaderComponent } from './components/loader/loader.component';
 import { SkeletonCardComponent } from './components/skeleton-card/skeleton-card.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
+import { BoyoutComponent } from './components/boyout/boyout.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
     LoaderComponent,
     SkeletonCardComponent,
     CreditCardComponent,
+    BoyoutComponent,
   ],
   imports: [
     CommonModule,

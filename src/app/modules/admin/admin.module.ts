@@ -26,6 +26,9 @@ import { TicketsDetailsComponent } from './tickets-details/tickets-details.compo
 import { AuthInterceptorService } from '@service/auth-interceptor.service';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { CreditCardsComponent } from './credit-cards/credit-cards.component';
+import { InvoicingComponent } from './invoicing/invoicing.component';
+import { BoyoutComponent } from '@shared/components/boyout/boyout.component';
+import { InvoicingUpdatedComponent } from './invoicing-updated/invoicing-updated.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,8 @@ import { CreditCardsComponent } from './credit-cards/credit-cards.component';
     TicketsDetailsComponent,
     UserDetailComponent,
     CreditCardsComponent,
+    InvoicingComponent,
+    InvoicingUpdatedComponent,
   ],
   imports: [
     CommonModule,

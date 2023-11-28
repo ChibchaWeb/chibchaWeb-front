@@ -8,12 +8,12 @@ import { StorageService } from './storage.service';
 export class ShoppingService {
   cartShopping: BehaviorSubject<any> = new BehaviorSubject(null);
   constructor(private storageService:StorageService) {
-    let items = this.storageService.getCartItems()
-    //if (items) this.setCartShopping(items)
+    /*let items = this.storageService.getCartItems()
+    if (items) this.setCartShopping(items)*/
   }
 
   setCartShopping(msg: any): void {
-      //this.storageService.saveCartShopping(JSON.stringify(msg))
+      //this.storageService.saveCartShopping(msg)
       this.cartShopping.next(msg);
 	}
 }

@@ -10,6 +10,7 @@ import { StorageService } from './storage.service';
 export class DomainsService {
 	apiUrl:any = env.host
 	headers: HttpHeaders;
+	user_id:number = +this.storageService.getUserID()
 
 	constructor(private http: HttpClient, private tokenService:TokenService,
 		private storageService:StorageService) {
@@ -44,6 +45,6 @@ export class DomainsService {
 	}
 
 	buyDomain(data:any){
-		return this.http.post(`${this.apiUrl}/domains/`,data,{ headers: this.headers })
+		return this.http.post(`${this.apiUrl}/domains/${this.user_id}`,data,{ headers: this.headers })
 	}
 }

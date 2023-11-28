@@ -1,11 +1,25 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TokenService } from './token.service';
+import { StorageService } from './storage.service';
+import { environment as env } from '../../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreditCardsService {
+	apiUrl:any = env.host
+	headers: HttpHeaders;
+	user_id:number = +this.storageService.getUserID()
 
-  constructor() { }
+	constructor(private http: HttpClient, private tokenService:TokenService,
+		private storageService:StorageService) {
+		this.headers = new HttpHeaders({
+			'Content-Type': 'application/json',
+			Authorization: `Basic ${this.tokenService.getToken()}`,
+		});
+	}
+
   validarNumeroTarjeta(numeroTarjeta: string): boolean {
     // Eliminar espacios en blanco y guiones de la cadena
     const numeroLimpio = String(numeroTarjeta).replace(/\s+/g, '').replace(/-/g, '');
@@ -65,5 +79,17 @@ export class CreditCardsService {
       return maskedCreditCard
     }
     return creditCard;
+  }
+
+  postCreditCard(data:any){
+    return this.http.post(`${this.apiUrl}/creditCards/`,data,{ headers: this.headers })
+  }
+
+  getCreditCard(){
+    return this.http.get(`${this.apiUrl}/creditCards/${this.user_id}`,{ headers: this.headers })
+  }
+
+  deleteCreditCard(idCard){
+    return this.http.delete(`${this.apiUrl}/creditCard/${idCard}`,{ headers: this.headers })
   }
 }

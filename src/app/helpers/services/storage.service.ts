@@ -52,7 +52,7 @@ export class StorageService {
   }
 
   saveCartShopping(cartShopping:string){
-    //localStorage.setItem('cartShopping',cartShopping);
+    localStorage.setItem('cartShopping',cartShopping);
   }
 
   getCartShopping(){

@@ -14,6 +14,8 @@ import { TicketsDetailsComponent } from './tickets-details/tickets-details.compo
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { CreditCardsComponent } from './credit-cards/credit-cards.component';
 import { CreditCardManagmentComponent } from './credit-card-managment/credit-card-managment.component';
+import { InvoicingComponent } from './invoicing/invoicing.component';
+import { InvoicingUpdatedComponent } from './invoicing-updated/invoicing-updated.component';
 
 
 const routes: Routes = [
@@ -28,6 +30,8 @@ const routes: Routes = [
       { path: 'credit-card-managment', component: CreditCardManagmentComponent, },
       { path: 'add-credit-card', component: CreditCardsComponent, },
       { path: 'hosting', component: HostingComponent, },
+      { path: 'invoicing', component: InvoicingComponent, },
+      { path: 'invoicing/updated', component: InvoicingUpdatedComponent, },
       { path: 'tickets', component: TicketsComponent, },
       { path: 'ticket-management', component: TicketManagementComponent, },
       { path: 'ticket-detail/:id', component: TicketsDetailsComponent, },

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { QueriesService } from '@service/queries.service';
 import { TicketsService } from '@service/tickets.service';
 import { v4 as uuidv4 } from 'uuid';
@@ -41,7 +42,7 @@ export class TicketsComponent {
   }
   ticketForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private ticketsService:TicketsService, private queriesService:QueriesService) {
+  constructor(private fb: FormBuilder, private ticketsService:TicketsService, private queriesService:QueriesService,private router: Router) {
     this.ticketForm = this.fb.group({
       //id:[null],
       //nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
@@ -89,6 +90,9 @@ export class TicketsComponent {
         next:(response)=>{
           console.log(response)
         },
+        complete:()=>{
+          this.router.navigate(['/admin/ticket-management/',]);
+        }
       })
     }
   }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TokenService } from '@service/token.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  isTokenExist;
+
+  constructor(private tokenService:TokenService){
+    this.isTokenExist = this.tokenService.getToken()
+  }
 }

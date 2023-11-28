@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CreditCardsService } from '@service/credit-cards.service';
+import { StorageService } from '@service/storage.service';
 
 @Component({
   selector: 'app-credit-card',
@@ -10,13 +12,26 @@ import { CreditCardsService } from '@service/credit-cards.service';
 export class CreditCardComponent {
   tarjetaForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private creditCardsService:CreditCardsService) {
+  constructor(private fb: FormBuilder, private creditCardsService:CreditCardsService, private storageService:StorageService,
+    private router: Router) {
     this.tarjetaForm = this.fb.group({
-      numeroTarjeta: ['', [Validators.required, this.creditCardsService.validarNumeroTarjeta, Validators.maxLength(16)]],
-      nombreTitular: ['', Validators.required],
-      fechaVencimiento: ['', [Validators.required, this.validarFechaVencimiento]],
-      cvc: ['', [Validators.required, Validators.pattern('^[0-9]{3,4}$')]],
+      card_number: ['', [Validators.required, this.creditCardsService.validarNumeroTarjeta, Validators.maxLength(19)]],
+      user_id: [this.storageService.getUserID(),],
+      expiration_date: ['', [Validators.required, this.validarFechaVencimiento]],
+      cvscard: ['', [Validators.required, Validators.pattern('^[0-9]{3,4}$')]],
+      cardholder_name : ['',], //Proveedor
+      owner : ['',], //titular
     });
+  }
+  // Método para formatear el número de tarjeta
+  onCardNumberInput(event: any) {
+    let inputVal = event.target.value;
+    // Eliminar cualquier caracter no numérico
+    inputVal = inputVal.replace(/\D/g, '');
+    // Dividir el número en bloques de 4
+    const formattedValue = inputVal.replace(/(\d{4})(?=\d)/g, '$1 ');
+    // Actualizar el valor del input formateado
+    this.tarjetaForm.patchValue({ card_number: formattedValue });
   }
 
   validarNumeroTarjeta(control) {
@@ -55,7 +70,18 @@ export class CreditCardComponent {
   enviarFormulario() {
     if (this.tarjetaForm.valid) {
       console.log('Formulario válido:', this.tarjetaForm.value);
-      // Aquí puedes enviar los datos al servidor o realizar otras operaciones necesarias
+      let {card_number,user_id,expiration_date,cvscard,cardholder_name} = this.tarjetaForm.value
+      this.creditCardsService.postCreditCard({card_number,user_id,expiration_date,cvscard,cardholder_name}).subscribe({
+        next:(response)=>{
+          console.log(response)
+          this.router.navigate(['/admin/credit-card-managment/',]);
+        },
+        complete() {
+        },
+        error(err) {
+            console.log(err)
+        },
+      })
     } else {
       console.log('Formulario no válido. Por favor, corrija los errores.');
     }

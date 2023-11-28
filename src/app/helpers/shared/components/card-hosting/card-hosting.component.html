@@ -33,7 +33,7 @@
 						<li>
 							<i class="bi bi-server"></i>
 							<label for="platform">Plataforma</label>
-							<select [(ngModel)]="platformSelected" id="platform" class="form-select" >
+							<select [(ngModel)]="platformSelected" id="platform" class="form-select">
 								<option [value]="item.id" *ngFor="let item of platform">
 									<span><i class="bi bi-windows"></i> {{item.name}}</span>
 								</option>

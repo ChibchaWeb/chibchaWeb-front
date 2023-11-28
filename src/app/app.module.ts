@@ -11,6 +11,7 @@ import { SharedModule } from './helpers/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApexchartsModule } from '@modules/apexcharts/apexcharts.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     ApexchartsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SweetAlert2Module,
   ],
   providers: [],
   bootstrap: [AppComponent]
