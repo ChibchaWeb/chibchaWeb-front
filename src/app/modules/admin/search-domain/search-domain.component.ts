@@ -123,7 +123,6 @@ export class SearchDomainComponent {
           let randomPriceIndex = Math.floor(Math.random() * prices.length);
           let randomSubtitleIndex = Math.floor(Math.random() * subtitle.length);
           let randomProvider = Math.floor(Math.random() * providerImage.length);
-          console.log(randomProvider)
           this.existingDomains.push({
             name: `${domainName}.${tld}`,
             uso: false,
@@ -153,7 +152,8 @@ export class SearchDomainComponent {
   }
 
   addToCart(domain:any){
-    if (!this.domainSelected.includes(domain)) this.domainSelected.push(domain)
+    const { name, costDomain = domain.discount, distributor_id, buyout_id = 1, discount, providerImage} = domain;
+    if (!this.domainSelected.includes(domain)) this.domainSelected.push({ name, costDomain, distributor_id,buyout_id,discount,providerImage })
     this.shoppingService.setCartShopping(Object.assign(this.shoppingService.cartShopping,{domainList:this.domainSelected}));
   }
 

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { StorageService } from '@service/storage.service';
+import { TokenService } from '@service/token.service';
 
 @Component({
   selector: 'app-navbar-admin',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class NavbarAdminComponent {
 
+  constructor(private tokenService:TokenService,private storageService:StorageService
+    ){
+  }
+
+  logout(){
+    this.tokenService.removeToken()
+    this.storageService.removeRol()
+    this.storageService.removeUser()
+    this.storageService.removeUserID()
+  }
 }

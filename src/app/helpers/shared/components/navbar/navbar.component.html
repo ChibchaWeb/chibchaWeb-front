@@ -33,6 +33,7 @@
 						<li><a href="#">Drop Down 4</a></li>
 					</ul>
 				</li>
+				<li><routerLink class="getstarted scrollto" *ngIf="isTokenExist" [routerLink]="['/admin/panel']" routerLinkActive="router-link-active" >Admin</routerLink></li>
 				<li><routerLink class="getstarted scrollto" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</routerLink></li>
 			</ul>
 			<i class="bi bi-list mobile-nav-toggle"></i>

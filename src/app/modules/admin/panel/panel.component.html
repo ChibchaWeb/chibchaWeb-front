@@ -2,14 +2,14 @@
 
 <mat-list>
 	<mat-list-item>
-		<h1>Bienvenido,Correo</h1>
+		<h1>Bienvenido, {{username}}</h1>
 	</mat-list-item>
 	<mat-divider></mat-divider>
 	<div class="cuadros">
-		<app-recuadro nombre="SERVICIOS"></app-recuadro>
-		<app-recuadro nombre="DOMINIOS"></app-recuadro>
+		<app-recuadro [numero]="hostingCount" nombre="HOSTINGS"></app-recuadro>
+		<app-recuadro [numero]="domainCount" nombre="DOMINIOS"></app-recuadro>
 		<app-recuadro [numero]="tokenCount" nombre="TICKETS"></app-recuadro>
-		<app-recuadro nombre="FACTURAS"></app-recuadro>
+		<app-recuadro [numero]="invoice" nombre="FACTURAS"></app-recuadro>
 	</div>
 </mat-list>
 
@@ -21,7 +21,7 @@
 	<div class="col-6 my-2">
 		<app-cuadros clase="mb-2" title="Registrar Dominies"
 			def="Ningún Ticket reciente. Si necesita ayuda, por favor Abra un Ticket"></app-cuadros>
-		<app-cuadros clase="mb-2" title="Tickets de Soporte - Recientes"></app-cuadros>
+		<app-cuadros clase="mb-2" title="Tickets de Soporte - Recientes" [content]="tiketInfo"></app-cuadros>
 	</div>
 	<div class="contenedor-dominios col-6 my-2">
 		<div class="head">Registrar Dominios</div>

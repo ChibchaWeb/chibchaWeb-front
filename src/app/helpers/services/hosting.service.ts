@@ -1,21 +1,34 @@
 import { Injectable } from '@angular/core';
 import { environment as env } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { TokenService } from './token.service';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HostingService {
 	apiUrl:any = env.host
+	headers: HttpHeaders;
+	user_id:number = +this.storageService.getUserID()
 
-  constructor(private http: HttpClient,) { }
+	constructor(private http: HttpClient, private tokenService:TokenService,
+		private storageService:StorageService) {
+		this.headers = new HttpHeaders({
+			'Content-Type': 'application/json',
+			Authorization: `Basic ${this.tokenService.getToken()}`,
+		});
+	}
 
   getHostings(id:string, ){
     return this.http.get(`${this.apiUrl}/hostings/${id}`)
   }
 
-  postHostings(id:string, data:any){
+  postHostingIds(id:string, data:any){
     return this.http.post(`${this.apiUrl}/hostings/${id}`, data)
+  }
+  postHostings(data:any){
+    return this.http.post(`${this.apiUrl}/hostings/${this.user_id}`, data,{ headers: this.headers })
   }
 
   /* getHosting(){

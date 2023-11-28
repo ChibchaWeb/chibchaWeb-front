@@ -44,15 +44,17 @@
           class="card py-2 px-3 mb-3">
 					<div class="row">
 						<div class="col-3 d-flex align-items-center plan">
-							<img [src]="'/assets/img/clients/'+item.title+'.png'" alt="Proveedor" class="img-fluid">
+              <img [src]="'/assets/img/clients/'+item.hosting_name+'.png'" [alt]="'Proveedor '+item.hosting_name" class="img-fluid">
 						</div>
 						<!-- Detalles del dominio -->
 						<div class="col-9">
 							<div class="">
-								<p class="mb-0"><strong>Plataformas:</strong> {{ item.platform ? item.platform: 'Linux'}}</p>
+								<p class="mb-0"><strong>Plataformas:</strong> {{ item.platform == 1 ? 'Microsoft Windows': 'Linux OS'}}</p>
 								<p class="mb-0"><strong>Proveedor:</strong> Chibchaweb</p>
 								<p class="mb-0"><strong>Años:</strong> 1 año</p>
-								<p class="mb-0"><strong>Total:</strong> <u> {{ item.currency | currency:'COP' }}</u></p>
+                <div class="alert alert-success" role="alert">
+                  <p class="mb-0"><strong>Total:</strong> <u> {{ item.currency | currency:'COP' }}</u></p>
+                </div>
 							</div>
 						</div>
 					</div>
@@ -86,7 +88,7 @@
             </div>
           </div>
           <!-- <app-checkout></app-checkout> -->
-          <button class="btn btn-primary" (click)="payment()">Pagar</button>
+          <button class="btn btn-primary" (click)="confirmPayment()">Pagar</button>
         </div>
       </div>
     </div>
