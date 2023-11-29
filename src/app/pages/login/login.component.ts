@@ -40,7 +40,7 @@ export class LoginComponent {
       documentType:['CC',],
       confirPassword: ['', [Validators.required, Validators.minLength(5)]],
       phone:[30030030,[Validators.required]],
-      countryID:['1',[Validators.required]],
+      countryID:[1,[Validators.required]],
     },
     {
       validators:[CustomValidators.MatchValidator('password','confirPassword')]
@@ -54,7 +54,22 @@ export class LoginComponent {
   onSubmit() {
     if (this.signupForm.valid) {
       console.log(this.signupForm.value)
-      this.authService.registerAndLogin(this.signupForm.value)
+      let {name,
+        email,
+        password,
+        idDocument,
+        documentType,
+        confirPassword,
+        phone,
+        country_id = +this.signupForm['controls']['countryID'].value} = this.signupForm.value
+      this.authService.registerAndLogin({name,
+        email,
+        password,
+        idDocument,
+        documentType,
+        confirPassword,
+        phone,
+        country_id})
       .subscribe({
         next:(response)=>{
           console.log(response)

@@ -38,7 +38,7 @@ export class AuthService {
     return this.http.post(`${env.host}/create/`,data)
   }
 
-  registerAndLogin(dataRegister:RegisterData){
+  registerAndLogin(dataRegister:any){
     return this.register(dataRegister)
     .pipe(
       switchMap(()=>this.login(dataRegister))
