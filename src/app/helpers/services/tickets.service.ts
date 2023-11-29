@@ -24,10 +24,6 @@ export class TicketsService {
   }
 
   getTickets(){
-		const headers = new HttpHeaders({
-			'Content-Type': 'application/json',
-			'Authorization': `Basic ${this.tokenService.getToken()}`
-		});
     return this.http.get(`${this.apiUrl}/tickets/`, { headers: this.headers })
   }
 

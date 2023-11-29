@@ -8,10 +8,12 @@ import { TokenService } from '@service/token.service';
   styleUrls: ['./navbar-admin.component.scss']
 })
 export class NavbarAdminComponent {
+  typeRol:any='1';
 
   constructor(private tokenService:TokenService,private storageService:StorageService
     ){
-  }
+      this.typeRol = Number(this.storageService.getRol())
+    }
 
   logout(){
     this.tokenService.removeToken()
