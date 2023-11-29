@@ -9,8 +9,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { usuario } from '@interfaces/usuario';
 import { UsersService } from '@service/users.service';
 import { Router } from '@angular/router';
-
-
+import Swal from 'sweetalert2';
 
 const list_usuarios: usuario[] = [
   {id: 1, nombre: 'Juan', correo: "Juan@gmail.com"},
@@ -19,7 +18,6 @@ const list_usuarios: usuario[] = [
   {id: 4, nombre: 'Santiago', correo: "Santiago@gmail.com"},
   {id: 5, nombre: 'Miguel', correo: "Miguel@gmail.com"},
   {id: 6, nombre: 'Leidy', correo: "Leidy@gmail.com"},
-  
 ];
 
 @Component({
@@ -64,7 +62,53 @@ export class ManagmentUsersComponent {
 
   updateUser(data:any){}
 
-  deletUser(data:any){}
+  confirmDeleteUser(id){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: "¿Está seguro?",
+      text: "¿Desea eliminar este usuario?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Aceptar",
+      cancelButtonText: "Cancelar",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire({
+          title: "Eliminado!",
+          text: "El usuario se ha eliminado con éxito",
+          icon: "success"
+        }).then((r)=>{
+          this.deletUser(id)
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelado",
+          text: "Se ha cancelado el proceso",
+          icon: "error"
+        });
+      }
+    });
+  }
+
+  deletUser(id:any){
+    this.usersService.deleteUser(id).subscribe({
+      next:(response)=>{
+        console.log(response)
+      },
+      complete:()=>{},
+      error:(err)=>{}
+    })
+  }
 
 }
 
