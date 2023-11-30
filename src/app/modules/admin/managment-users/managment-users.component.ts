@@ -10,6 +10,8 @@ import { usuario } from '@interfaces/usuario';
 import { UsersService } from '@service/users.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { StorageService } from '@service/storage.service';
+import { QueriesService } from '@service/queries.service';
 
 const list_usuarios: usuario[] = [
   {id: 1, nombre: 'Juan', correo: "Juan@gmail.com"},
@@ -33,17 +35,31 @@ export class ManagmentUsersComponent {
   @ViewChild(MatSort) sort: MatSort;
   displayedColumns: string[] = ['id', 'nombre', 'correo', 'rol', 'pais', 'acciones' ];
   clickedRows = new Set<usuario>();
+  typeRol:any;
+  roleList:any;
+  userId:any;
+  rolSelected:any;
   //dataSource = new MatTableDataSource(list_usuarios);
   dataSource:any =[];
- 
-  constructor(private usersService:UsersService,private router: Router){
-    this.usersService.getUsers().subscribe({
-      next:(response)=>{
-        this.dataSource = response
-      },
-      complete:()=>{},
-      error:(err)=>{}
-    })
+
+  constructor(private usersService:UsersService,private router: Router,private storageService:StorageService,
+    private queriesService:QueriesService
+    ){
+      this.userId = this.storageService.getUserID()
+      this.typeRol = Number(this.storageService.getRol())
+      this.usersService.getUsers().subscribe({
+        next:(response)=>{
+          this.dataSource = response
+          this.rolSelected = Number(this.storageService.getRol())
+        },
+        complete:()=>{},
+        error:(err)=>{}
+      })
+      this.queriesService.getRoles().subscribe({
+        next:(request)=>{
+          this.roleList =(request)
+        }
+      })
   }
 
   applyFilter(event: Event) {
@@ -60,6 +76,13 @@ export class ManagmentUsersComponent {
     this.router.navigate(['/admin/user-detail/', data.user.id]);
   }
 
+  updateRole(usuario,event){
+    this.usersService.updateUser(usuario.user.id, {rol_id:event['target'].value}).subscribe({
+      next(value) {
+          console.log(value)
+      },
+    })
+  }
   updateUser(data:any){}
 
   confirmDeleteUser(id){

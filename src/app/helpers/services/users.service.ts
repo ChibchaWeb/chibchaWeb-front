@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment as env } from '../../../environments/environment';
 import { StorageService } from './storage.service';
 import { TokenService } from './token.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,23 +20,23 @@ export class UsersService {
     });
   }
 
-  getUsers(){
+  getUsers():Observable<any>{
     return this.http.get(`${this.apiUrl}/users/`, { headers: this.headers })
   }
 
-  postUsers(data:any){
+  postUsers(data:any):Observable<any>{
     return this.http.post(`${this.apiUrl}/users/`, data, { headers: this.headers })
   }
 
-  getUserDetails(id:any){
+  getUserDetails(id:any):Observable<any>{
     return this.http.get(`${this.apiUrl}/users/${id}`, { headers: this.headers })
   }
 
-  updateUser( payload:any,id:string){
-    return this.http.patch(`${this.apiUrl}/users/${id}`, payload, { headers: this.headers })
+  updateUser(id:any,payload:any):Observable<any>{
+    return this.http.put(`${this.apiUrl}/users/${id}`, payload, { headers: this.headers })
   }
 
-  deleteUser(id:string){
+  deleteUser(id:string):Observable<any>{
     return this.http.delete(`${this.apiUrl}/users/${id}`, { headers: this.headers })
   }
 

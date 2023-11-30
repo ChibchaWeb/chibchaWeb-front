@@ -28,6 +28,7 @@ export class TicketManagementComponent {
   }
 
   cambiarEstado(ticket: any) {
+    this.router.navigate(['/admin/ticket-updated/', ticket.id]);
   }
 
   getPriorityClass(priority: number): string {

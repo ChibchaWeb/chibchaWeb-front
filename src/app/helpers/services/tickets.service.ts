@@ -32,7 +32,7 @@ export class TicketsService {
   }
 
   updateTicket(id:any, payload:any){
-    return this.http.patch(`${this.apiUrl}/ticket/${id}`, payload, { headers: this.headers })
+    return this.http.put(`${this.apiUrl}/ticket/${id}`, payload, { headers: this.headers })
   }
 
   deleteTicket(id:any){

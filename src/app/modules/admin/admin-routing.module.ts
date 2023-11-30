@@ -16,6 +16,11 @@ import { CreditCardsComponent } from './credit-cards/credit-cards.component';
 import { CreditCardManagmentComponent } from './credit-card-managment/credit-card-managment.component';
 import { InvoicingComponent } from './invoicing/invoicing.component';
 import { InvoicingUpdatedComponent } from './invoicing-updated/invoicing-updated.component';
+import { DistributorManagmentComponent } from './distributor-managment/distributor-managment.component';
+import { RolesManagmentComponent } from './roles-managment/roles-managment.component';
+import { RolComponent } from './rol/rol.component';
+import { DistributorsComponent } from './distributors/distributors.component';
+import { TicketsUpdatedComponent } from './tickets-updated/tickets-updated.component';
 
 
 const routes: Routes = [
@@ -32,9 +37,14 @@ const routes: Routes = [
       { path: 'hosting', component: HostingComponent, },
       { path: 'invoicing', component: InvoicingComponent, },
       { path: 'invoicing/updated', component: InvoicingUpdatedComponent, },
+      { path: 'distributors', component: DistributorManagmentComponent, },
+      { path: 'distributor', component: DistributorsComponent, },
+      { path: 'roles', component: RolesManagmentComponent, },
+      { path: 'rol', component: RolComponent, },
       { path: 'tickets', component: TicketsComponent, },
       { path: 'ticket-management', component: TicketManagementComponent, },
       { path: 'ticket-detail/:id', component: TicketsDetailsComponent, },
+      { path: 'ticket-updated/:id', component: TicketsUpdatedComponent, },
       { path: 'user-managment', component: ManagmentUsersComponent, },
       { path: 'user-detail/:id', component: UserDetailComponent, },
       { path: 'buy-register', component: BuyRegisterComponent, },
