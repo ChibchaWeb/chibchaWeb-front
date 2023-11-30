@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
 import { StorageService } from './storage.service';
 import { environment as env } from '../../../environments/environment'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -81,15 +82,15 @@ export class CreditCardsService {
     return creditCard;
   }
 
-  postCreditCard(data:any){
+  postCreditCard(data:any):Observable<any>{
     return this.http.post(`${this.apiUrl}/creditCards/`,data,{ headers: this.headers })
   }
 
-  getCreditCard(){
+  getCreditCard():Observable<any>{
     return this.http.get(`${this.apiUrl}/creditCards/${this.user_id}`,{ headers: this.headers })
   }
 
-  deleteCreditCard(idCard){
+  deleteCreditCard(idCard):Observable<any>{
     return this.http.delete(`${this.apiUrl}/creditCard/${idCard}`,{ headers: this.headers })
   }
 }

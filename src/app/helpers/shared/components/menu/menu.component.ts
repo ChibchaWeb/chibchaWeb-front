@@ -23,9 +23,10 @@ export class MenuComponent {
       },
     })
     if (this.data) {
-      this.usersService.updateUser(this.userId, {rol_id:1, ...this.data}).subscribe({
+      this.usersService.updateUser(this.userId, {rol_id:3, ...this.data}).subscribe({
         next(value) {
             console.log(value)
+            this.storageService.saveRol(3)
         },
       })
     }
