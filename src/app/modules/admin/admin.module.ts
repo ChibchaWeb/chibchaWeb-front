@@ -29,6 +29,11 @@ import { CreditCardsComponent } from './credit-cards/credit-cards.component';
 import { InvoicingComponent } from './invoicing/invoicing.component';
 import { BoyoutComponent } from '@shared/components/boyout/boyout.component';
 import { InvoicingUpdatedComponent } from './invoicing-updated/invoicing-updated.component';
+import { DistributorsComponent } from './distributors/distributors.component';
+import { DistributorManagmentComponent } from './distributor-managment/distributor-managment.component';
+import { RolesManagmentComponent } from './roles-managment/roles-managment.component';
+import { RolComponent } from './rol/rol.component';
+import { TicketsUpdatedComponent } from './tickets-updated/tickets-updated.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,11 @@ import { InvoicingUpdatedComponent } from './invoicing-updated/invoicing-updated
     CreditCardsComponent,
     InvoicingComponent,
     InvoicingUpdatedComponent,
+    DistributorsComponent,
+    DistributorManagmentComponent,
+    RolesManagmentComponent,
+    RolComponent,
+    TicketsUpdatedComponent,
   ],
   imports: [
     CommonModule,

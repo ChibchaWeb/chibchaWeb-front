@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { StorageService } from '@service/storage.service';
+import { UsersService } from '@service/users.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,8 +9,25 @@ import { StorageService } from '@service/storage.service';
 })
 export class MenuComponent {
   username:string='Anónimo'
+  userId:any='1'
+  data:any={}
 
-  constructor(private storageService:StorageService){
+  constructor(private storageService:StorageService, private  usersService:UsersService){
     this.username = this.storageService.getUser()
+    this.userId = this.storageService.getUserID()
+  }
+  updateRole(){
+    this.usersService.getUserDetails(this.userId).subscribe({
+      next(value) {
+          this.data = value['user']
+      },
+    })
+    if (this.data) {
+      this.usersService.updateUser(this.userId, {rol_id:1, ...this.data}).subscribe({
+        next(value) {
+            console.log(value)
+        },
+      })
+    }
   }
 }
