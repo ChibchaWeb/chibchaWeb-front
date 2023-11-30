@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class TicketManagementComponent {
   @Input() tickets: any[] = [];
   dataSource:any;
-  displayedColumns: string[] = ['id','asunto', 'mensaje', 'estado', 'acciones'];
+  displayedColumns: string[] = ['id','asunto', 'mensaje', 'estado', 'prioridad', 'acciones'];
   pageSizeOptions: number[] = [5, 10, 20];
   pageSize = 5;
 
@@ -28,5 +28,20 @@ export class TicketManagementComponent {
   }
 
   cambiarEstado(ticket: any) {
+    this.router.navigate(['/admin/ticket-updated/', ticket.id]);
+  }
+
+  getPriorityClass(priority: number): string {
+    if (priority === 1) {
+      return 'success';
+    } else if (priority === 2) {
+      return 'warning';
+    } else {
+      return 'danger';
+    }
+  }
+
+  generateRange(end: number): number[] {
+    return Array.from({ length: end }, (_, index) => index + 1);
   }
 }

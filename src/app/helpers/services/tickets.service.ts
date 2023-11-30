@@ -24,10 +24,6 @@ export class TicketsService {
   }
 
   getTickets(){
-		const headers = new HttpHeaders({
-			'Content-Type': 'application/json',
-			'Authorization': `Basic ${this.tokenService.getToken()}`
-		});
     return this.http.get(`${this.apiUrl}/tickets/`, { headers: this.headers })
   }
 
@@ -36,7 +32,7 @@ export class TicketsService {
   }
 
   updateTicket(id:any, payload:any){
-    return this.http.patch(`${this.apiUrl}/ticket/${id}`, payload, { headers: this.headers })
+    return this.http.put(`${this.apiUrl}/ticket/${id}`, payload, { headers: this.headers })
   }
 
   deleteTicket(id:any){

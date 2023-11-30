@@ -41,6 +41,7 @@ export class LoginComponent {
       confirPassword: ['', [Validators.required, Validators.minLength(5)]],
       phone:[30030030,[Validators.required]],
       countryID:[1,[Validators.required]],
+      rol_id:[3]
     },
     {
       validators:[CustomValidators.MatchValidator('password','confirPassword')]
@@ -61,6 +62,7 @@ export class LoginComponent {
         documentType,
         confirPassword,
         phone,
+        rol_id,
         country_id = +this.signupForm['controls']['countryID'].value} = this.signupForm.value
       this.authService.registerAndLogin({name,
         email,
@@ -68,7 +70,7 @@ export class LoginComponent {
         idDocument,
         documentType,
         confirPassword,
-        phone,
+        phone,rol_id,
         country_id})
       .subscribe({
         next:(response)=>{
