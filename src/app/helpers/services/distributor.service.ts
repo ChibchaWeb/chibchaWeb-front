@@ -16,8 +16,8 @@ export class DistributorService {
       Authorization: `Basic ${this.tokenService.getToken()}`,
     });}
 
-  getDistributors(id:string, ){
-    return this.http.get(`${this.apiUrl}/distributors/${id}`, { headers: this.headers })
+  getDistributors(){
+    return this.http.get(`${this.apiUrl}/distributors/`, { headers: this.headers })
   }
 
   postDistributors(id:string, data:any){

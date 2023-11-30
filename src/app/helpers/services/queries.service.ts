@@ -62,11 +62,11 @@ export class QueriesService {
   /** roles **/
 
   getRoles(){
-    return this.http.get(`${this.apiUrl}/roles/`, { headers: this.headers })
+    return this.http.get(`${this.apiUrl}/rols/`, { headers: this.headers })
   }
 
   postRoles(data:any){
-    return this.http.post(`${this.apiUrl}/roles/`, data, { headers: this.headers })
+    return this.http.post(`${this.apiUrl}/rols/`, data, { headers: this.headers })
   }
 
   getDetailsRol(id:any){
