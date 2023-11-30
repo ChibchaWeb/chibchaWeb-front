@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment as env} from '../../../environments/environment';
 import { LoginData, LoginResponse, RegisterData } from '../models/auth.model';
@@ -11,13 +11,19 @@ import { StorageService } from './storage.service';
 })
 export class AuthService {
 
+  headers:any;
   apiUrl = env.API_URL
-  constructor(private http:HttpClient, private tokenService:TokenService, private storageService:StorageService) { }
+  constructor(private http:HttpClient, private tokenService:TokenService, private storageService:StorageService) {
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${this.tokenService.getToken()}`,
+    });
+  }
 
   //{email, password}
   login(data:LoginData):any{
     //return this.http.post<LoginResponse>(`${this.apiUrl}/api/v1/auth/login`,data)
-    return this.http.post<LoginResponse>(env.host+'/login/',data)
+    return this.http.post<LoginResponse>(env.host+'/login/',data, { headers: this.headers })
     .pipe(
       tap(response => {
         //this.tokenService.saveToken(response.access_token)
@@ -35,7 +41,7 @@ export class AuthService {
   */
   register(data:RegisterData):any{
     //return this.http.post(`${this.apiUrl}/api/v1/auth/register`,data)
-    return this.http.post(`${env.host}/create/`,data)
+    return this.http.post(`${env.host}/create/`,data, { headers: this.headers })
   }
 
   registerAndLogin(dataRegister:any){
@@ -46,7 +52,7 @@ export class AuthService {
   }
 
   logout():any{
-    return this.http.get(`${env.host}/logout/`)
+    return this.http.get(`${env.host}/logout/`, { headers: this.headers })
   }
 
   getRoles(){

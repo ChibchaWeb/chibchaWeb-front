@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment as env } from '../../../environments/environment'
 import { StorageService } from './storage.service';
 import { TokenService } from './token.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,11 @@ export class ConnectionService {
 		});
 	}
 
-  getInvoicing(){
+  getInvoicing():Observable<any>{
     return this.http.get(`${this.apiUrl}/buyouts/${this.user_id}`,{ headers: this.headers })
   }
 
-  putInvoicing(data:any, id){
+  putInvoicing(data:any, id):Observable<any>{
     return this.http.put(`${this.apiUrl}/buyout/${id}`,data,{ headers: this.headers })
   }
 
