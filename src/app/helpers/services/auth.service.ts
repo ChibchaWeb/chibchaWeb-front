@@ -23,7 +23,7 @@ export class AuthService {
   //{email, password}
   login(data:LoginData):any{
     //return this.http.post<LoginResponse>(`${this.apiUrl}/api/v1/auth/login`,data)
-    return this.http.post<LoginResponse>(env.host+'/login/',data, { headers: this.headers })
+    return this.http.post<LoginResponse>(env.host+'/login/',data)
     .pipe(
       tap(response => {
         //this.tokenService.saveToken(response.access_token)
@@ -41,7 +41,7 @@ export class AuthService {
   */
   register(data:RegisterData):any{
     //return this.http.post(`${this.apiUrl}/api/v1/auth/register`,data)
-    return this.http.post(`${env.host}/create/`,data, { headers: this.headers })
+    return this.http.post(`${env.host}/create/`,data)
   }
 
   registerAndLogin(dataRegister:any){
@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   logout():any{
-    return this.http.get(`${env.host}/logout/`, { headers: this.headers })
+    return this.http.get(`${env.host}/logout/`)
   }
 
   getRoles(){
