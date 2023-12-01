@@ -32,7 +32,7 @@
                     <option value="1" [selected]="usuario.rol.id ==1">Cliente</option>
                     <option value="2" [selected]="usuario.rol.id ==2">Empleado</option>
                     <option value="3" [selected]="usuario.rol.id ==3">Administrador</option>
-                    <option value="3" [selected]="usuario.rol.id ==4">Distribuidor</option>
+                    <option value="4" [selected]="usuario.rol.id ==4">Distribuidor</option>
                 </select>
                 <span [hidden]="typeRol!=1 && typeRol!=4" >{{usuario.rol.name }}</span>
             </td>
