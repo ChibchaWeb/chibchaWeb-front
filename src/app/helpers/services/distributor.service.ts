@@ -15,7 +15,6 @@ export class DistributorService {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Basic ${this.tokenService.getToken()}`,
-      referrerPolicy: 'unsafe-url'
     });}
 
   getDistributors():Observable<any>{
