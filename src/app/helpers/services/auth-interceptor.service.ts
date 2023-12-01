@@ -22,6 +22,7 @@ export class AuthInterceptorService  implements HttpInterceptor {
       setHeaders: {
         'Content-Type': 'application/json',
         Authorization: `Basic ${this.tokenService.getToken()}`,
+        "ngrok-skip-browser-warning": "69420",
       },
     });
     return next.handle(authReq);
