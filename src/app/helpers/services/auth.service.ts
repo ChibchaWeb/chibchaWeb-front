@@ -22,8 +22,8 @@ export class AuthService {
 
   //{email, password}
   login(data:LoginData):any{
-    //return this.http.post<LoginResponse>(`${this.apiUrl}/api/v1/auth/login`,data)
-    return this.http.post<LoginResponse>(env.host+'/login/',data, { headers: this.headers })
+    return this.http.post<LoginResponse>(`${this.apiUrl}/api/v1/auth/login`,data)
+    //return this.http.post<LoginResponse>(env.host+'/login/',data, { headers: this.headers })
     .pipe(
       tap(response => {
         //this.tokenService.saveToken(response.access_token)
@@ -40,8 +40,8 @@ export class AuthService {
   {"name":"prueba","email":"prueba@gmail.com","avatar":"https://api.lorem.space/image/face?w=480&h=480&r=7741","id":9,"creationAt":"2023-11-18T21:40:10.000Z","updatedAt":"2023-11-18T21:40:10.000Z"}
   */
   register(data:RegisterData):any{
-    //return this.http.post(`${this.apiUrl}/api/v1/auth/register`,data)
-    return this.http.post(`${env.host}/create/`,data, { headers: this.headers })
+    return this.http.post(`${this.apiUrl}/api/v1/auth/register`,data)
+    //return this.http.post(`${env.host}/create/`,data, { headers: this.headers })
   }
 
   registerAndLogin(dataRegister:any){
