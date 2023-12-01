@@ -18,6 +18,7 @@ export class CreditCardsService {
 		this.headers = new HttpHeaders({
 			'Content-Type': 'application/json',
 			Authorization: `Basic ${this.tokenService.getToken()}`,
+      "ngrok-skip-browser-warning": "69420",
 		});
 	}
 
