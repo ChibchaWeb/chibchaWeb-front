@@ -4,7 +4,7 @@ export const environment = {
     token:'d8e9ecbc80a7f004616b00a503fd9621902e59db',
     username:'chibchaweb'
   }, 
-  host:'https://a010-181-59-3-82.ngrok-free.app', // 'http://localhost:5000/',
+  host:'https://alexfinal.igor.rest', // 'http://localhost:5000/',
   API_URL: 'http://fake-trello-api.herokuapp.com',
   paypal:{
     email:'sb-tc91228160457@business.example.com',
